@@ -6,6 +6,9 @@
 body {
   height: 100vh;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 
@@ -33,4 +36,12 @@ body {
   height: 2.5%;
   width: 2.5%;
   font-size: 5%;
+}
+
+.grid div.lipstick {
+background-image: url('/Users/olecastronascimento/development/sei-project_1/assets/cat.png');
+/*/height: 5%;
+//width: 5%;*/
+background-repeat: no-repeat;
+background-size: contain;
 }
