@@ -33,15 +33,13 @@ body {
 .grid div {
   border: .5px solid lightgrey;
   flex-grow: 1;
-  height: 2.5%;
-  width: 2.5%;
-  font-size: 5%;
+  height: 5%;
+  width: 5%;
+  font-size: 10%;
 }
 
 .grid div.lipstick {
 background-image: url('/Users/olecastronascimento/development/sei-project_1/assets/cat.png');
-/*/height: 5%;
-//width: 5%;*/
 background-repeat: no-repeat;
 background-size: contain;
 }

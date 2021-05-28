@@ -4,7 +4,7 @@ function init() {
   // Grid
   const grid = document.querySelector('.grid')
   //console.log(grid)
-  const width = 40
+  const width = 20
   //console.log(width)
   const cellCount = width * width
   //console.log(cellCount)
@@ -13,8 +13,8 @@ function init() {
 
   // Lipstick shooter position 
   const lipClass = 'lipstick'
-  const lipStartPosition = 1573 // startign posititon of lipstick 
-  let lipCurrentPosition = 0 // current postition of lipstick 
+  const lipStartPosition = 350 // startign posititon of lipstick 
+  let lipCurrentPosition = 350 // current postition of lipstick 
 
 
   //The Grid
@@ -32,12 +32,10 @@ function init() {
     console.log('position passed in', position)
     cells[position].classList.add(lipClass)
   }
-
   // Remove lipstick from Grid-call to remove
   function removeLip(position) {
     cells[position].classList.remove(lipClass)
   }
-
   addLipstick(lipStartPosition)
   console.log(addLipstick)
 
@@ -46,13 +44,25 @@ function init() {
   // Move Lipstick 
   function handleKeyUp(event) {
     const key = event.keyCode 
-    console.log(lipCurrentPosition)
+    console.log('current position', lipCurrentPosition)
     removeLip(lipCurrentPosition) 
+    console.log('keyCode:', event.keyCode)
+    
 
-  
+    if (key === 37 && lipCurrentPosition % width !== 0)  {
+      lipCurrentPosition--
+    } else if (key === 39 && lipCurrentPosition % width !== width - 1){
+      lipCurrentPosition++
+    } else {
+      console.log('InvalidKey')
+    }
+    console.log('position after redefining', lipCurrentPosition)
+    addLipstick(lipCurrentPosition)
   }
 
-// Event listeneners 
+  
+
+  // Event listeneners 
 
   document.addEventListener('keyup', handleKeyUp)
 
