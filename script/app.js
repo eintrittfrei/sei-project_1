@@ -33,18 +33,28 @@ function init() {
     cells[position].classList.add(lipClass)
   }
 
-  // Remove lipstick from Grid
+  // Remove lipstick from Grid-call to remove
   function removeLip(position) {
     cells[position].classList.remove(lipClass)
   }
 
-
   addLipstick(lipStartPosition)
-
   console.log(addLipstick)
 
 
 
+  // Move Lipstick 
+  function handleKeyUp(event) {
+    const key = event.keyCode 
+    console.log(lipCurrentPosition)
+    removeLip(lipCurrentPosition) 
+
+  
+  }
+
+// Event listeneners 
+
+  document.addEventListener('keyup', handleKeyUp)
 
 
 
