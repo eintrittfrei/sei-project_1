@@ -14,7 +14,7 @@ body {
 
 
 .grid-wrapper {
-  height: 100vh;
+  height: 600px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,4 +43,9 @@ body {
 background-image: url('/Users/olecastronascimento/development/sei-project_1/assets/ru-paul.png');
 background-repeat: no-repeat;
 background-size: contain;
+}
+
+.grid div.drags {
+  background-image: url('/Users/olecastronascimento/development/sei-project_1/assets/kisspng-tatianna-rupaul-s-drag-race-season-4-drag-queen-telegram-amp-q-5b6e02766adb80.8057967615339362464377.png');
+  background-size: contain;
 }
