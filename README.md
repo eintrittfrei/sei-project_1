@@ -7,7 +7,7 @@ score  board
 lives left count board
 
 Grid:
-js grid 
+js grid 40X40 grid on 600X600 wrapper 
 
 aliens:
  -worth 10 points - 1 row of  (.class + index?)
@@ -39,5 +39,13 @@ OR it reaches a grid (index number) with an object
 
 aliens movign in formation: 
 
+
+
+Functions: 
+Basic grid 20X420 
+Game start function 
+Grid 
+movement for shooting 
+movement for drag queens moving sideways and downwards on loop/ interval . with classes or movement W3 idea. 
 
 

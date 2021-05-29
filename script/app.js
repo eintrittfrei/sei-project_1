@@ -4,7 +4,7 @@ function init() {
   // Grid
   const grid = document.querySelector('.grid')
   //console.log(grid)
-  const width = 20
+  const width = 10
   //console.log(width)
   const cellCount = width * width
   //console.log(cellCount)
@@ -13,8 +13,8 @@ function init() {
 
   // Lipstick shooter position 
   const lipClass = 'lipstick'
-  const lipStartPosition = 350 // startign posititon of lipstick 
-  let lipCurrentPosition = 350 // current postition of lipstick 
+  const lipStartPosition = 84 // startign posititon of lipstick 
+  let lipCurrentPosition = 84 // current postition of lipstick 
 
 
   //The Grid

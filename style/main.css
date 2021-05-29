@@ -7,8 +7,9 @@ body {
   height: 100vh;
   margin: 0;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: space-evenly;
 }
 
 
@@ -26,20 +27,20 @@ body {
   flex-wrap: wrap;
   height: 100%;
   justify-content: center;
-  height: 700px;
-  width: 700px;
+  height: 600px;
+  width: 600px;
 }
 
 .grid div {
   border: .5px solid lightgrey;
   flex-grow: 1;
-  height: 5%;
-  width: 5%;
-  font-size: 10%;
+  height: 10%;
+  width: 10%;
+  font-size: 60%;
 }
 
 .grid div.lipstick {
-background-image: url('/Users/olecastronascimento/development/sei-project_1/assets/cat.png');
+background-image: url('/Users/olecastronascimento/development/sei-project_1/assets/ru-paul.png');
 background-repeat: no-repeat;
 background-size: contain;
 }
