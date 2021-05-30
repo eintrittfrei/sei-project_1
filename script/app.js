@@ -14,20 +14,23 @@ function init() {
   //console.log(cells)
 
   // Lipstick shooter - position 
-  const lipClass = 'lipstick'
+  const lipClass = 'lipstick' //
   const lipStartPosition = 84 // startign posititon of lipstick 
   let lipCurrentPosition = 84 // current postition of lipstick 
 
 
-  const squaresGrid = document.querySelectorAll('.grid') // select the divs in the grid 
+  //const squaresGrid = document.querySelectorAll('.grid') // select the divs in the grid 
   const startButton = document.querySelector('#start') // select start button 
-  const pointsShot = document.querySelector('#points-display') // select points display 
-  const livesLeft = document.querySelectorAll('#lives-display') //select lives display 
+  //const pointsShot = document.querySelector('#points-display') // select points display 
+  //const livesLeft = document.querySelectorAll('#lives-display') //select lives display 
 
   const dragClass = 'drags'
   const dragStartPosition = 10
   let dragCurrentPosition = 10
   let dragTimer
+
+
+
 
 
 
@@ -41,6 +44,8 @@ function init() {
     grid.appendChild(cell)
     cells.push(cell)
   }
+
+
 
   // GAME CONTROLLER RU PAUL:   
 
@@ -73,27 +78,15 @@ function init() {
     addLipstick(lipCurrentPosition)
   }
 
-  //DRAG QUEENS position 
   
 
-/*
-  function startGame() {
-    squaresGrid[dragCurrentPosition].classList.add('drags') // drags at starging position 
-    console.log(squaresGrid)
-
-    squaresGrid[dragCurrentPosition].classList.remove('drags') // remove drags from current square
-    dragCurrentPosition = dragCurrentPosition.length++ // new position 
-    squaresGrid[dragCurrentPosition].classList.add('drags')
-  }
-
-  startGame()*/
 
   //DRAG QUEENS MOVING: WORKING adding DRAG
 
   //Add drag to grid 
   function addDrags(position) {
     cells[position].classList.add(dragClass)
-    console.log('lips position passed in ', position)
+    //console.log('lips position passed in ', position)
 
   }
   //remove drag from grid 
@@ -103,7 +96,7 @@ function init() {
 
   addDrags(dragStartPosition)
 
-  function autoMoveDrags(){
+  /*function startGame(){
     //removeDrags(dragCurrentPosition)
     dragTimer = setInterval(() => {
       if (dragCurrentPosition < 99) {
@@ -116,11 +109,48 @@ function init() {
       addDrags(dragCurrentPosition)
     },1000)
   }
+*/
 
+
+  function startGame(){
+    //removeDrags(dragCurrentPosition)
+    dragTimer = setInterval(() => {
+      if (dragCurrentPosition < 19) { 
+        removeDrags(dragCurrentPosition)
+        dragCurrentPosition++
+      } else if (dragCurrentPosition === 19) {
+        removeDrags(dragCurrentPosition)
+        dragCurrentPosition = 29
+      } else if (dragCurrentPosition > 20) {
+        removeDrags(dragCurrentPosition)
+        dragCurrentPosition--
+      } else if (dragCurrentPosition === 20) {
+        removeDrags(dragCurrentPosition)
+        dragCurrentPosition = 30 // works until this point 
+        return
+      } 
+
+      addDrags(dragCurrentPosition)
+    },1000)
+  }
+
+/* function startGame2(){
+    dragTimer2 = setInterval(() => {
+      if (dragCurrentPosition < 39) {
+        removeDrags(dragCurrentPosition)
+        dragCurrentPosition--
+      } else if (dragCurrentPosition === 20) {
+        removeDrags(dragCurrentPosition)
+
+      }
+      //addDrags(dragCurrentPosition)
+    }, 1000)
+
+*/
 
   // Event listeneners 
 
-  startButton.addEventListener('click', autoMoveDrags)
+  startButton.addEventListener('click', startGame)
 
   document.addEventListener('keyup', handleKeyUp)
   
