@@ -129,12 +129,11 @@ function init() {
         dragCurrentPosition = 30 // works until this point 
         return
       } 
-
       addDrags(dragCurrentPosition)
     },1000)
   }
 
-/* function startGame2(){
+ /* function startGame2(){
     dragTimer2 = setInterval(() => {
       if (dragCurrentPosition < 39) {
         removeDrags(dragCurrentPosition)
@@ -147,6 +146,12 @@ function init() {
     }, 1000)
 
 */
+
+
+
+// Shooting motion 
+
+
 
   // Event listeneners 
 
