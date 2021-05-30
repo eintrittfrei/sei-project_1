@@ -19,6 +19,18 @@ function init() {
   let lipCurrentPosition = 84 // current postition of lipstick 
 
 
+  const squaresGrid = document.querySelectorAll('.grid') // select the divs in the grid 
+  const startButton = document.querySelector('#start') // select start button 
+  const pointsShot = document.querySelector('#points-display') // select points display 
+  const livesLeft = document.querySelectorAll('#lives-display') //select lives display 
+
+  const dragClass = 'drags'
+  const dragStartPosition = 10
+  let dragCurrentPosition = 10
+  let dragTimer
+
+
+
 
   // GRID
 
@@ -61,31 +73,22 @@ function init() {
     addLipstick(lipCurrentPosition)
   }
 
-  /*//DRAG QUEENS position 
-  const squaresGrid = document.querySelectorAll('.grid') // select the divs in the grid 
-  const startButton = document.querySelector('#start') // select start button 
-  const pointsShot = document.querySelector('#points-display') // select points display 
-  const livesLeft = document.querySelectorAll('#lives-display') //select lives display 
-*/
-  const dragClass = 'drags'
-  const dragStartPosition = 10
-  let dragCurrentPosition = 10
+  //DRAG QUEENS position 
+  
 
-
-
-  /*function startGame() {
+/*
+  function startGame() {
     squaresGrid[dragCurrentPosition].classList.add('drags') // drags at starging position 
     console.log(squaresGrid)
 
     squaresGrid[dragCurrentPosition].classList.remove('drags') // remove drags from current square
-    dragCurrentPosition = dragCurrentPosition++ // new position 
+    dragCurrentPosition = dragCurrentPosition.length++ // new position 
     squaresGrid[dragCurrentPosition].classList.add('drags')
+  }
 
-  }*/
+  startGame()*/
 
-
-
-  /*// DRAG QUEENS MOVING: WORKING adding DRAG
+  //DRAG QUEENS MOVING: WORKING adding DRAG
 
   //Add drag to grid 
   function addDrags(position) {
@@ -99,15 +102,25 @@ function init() {
   }
 
   addDrags(dragStartPosition)
-*/
 
-
-
+  function autoMoveDrags(){
+    //removeDrags(dragCurrentPosition)
+    dragTimer = setInterval(() => {
+      if (dragCurrentPosition < 99) {
+        removeDrags(dragCurrentPosition)
+        dragCurrentPosition++
+      } else if (dragCurrentPosition === 99) {
+        removeDrags(dragCurrentPosition)
+        window.alert('GAME OVER')
+      }
+      addDrags(dragCurrentPosition)
+    },1000)
+  }
 
 
   // Event listeneners 
 
-  //document.addEventListener('click', startGame)
+  startButton.addEventListener('click', autoMoveDrags)
 
   document.addEventListener('keyup', handleKeyUp)
   
