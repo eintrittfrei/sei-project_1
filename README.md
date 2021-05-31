@@ -42,10 +42,24 @@ aliens movign in formation:
 
 
 Functions: 
-Basic grid 20X420 
+Basic grid 20X420
 Game start function 
 Grid 
 movement for shooting 
 movement for drag queens moving sideways and downwards on loop/ interval . with classes or movement W3 idea. 
 
+
+
+drag queen movement: 
+
+-select all squares in grid .grid with variable 
+-current postion 
+
+function dragsMove() {
+  squares[curentposition].classList.add('dragsclass') // to show drag at start position 
+   
+}
+
+
+let currentPosition = 10 // want it to move to 11 then 12 etc. until 19 then move to 29 then move left to 28, 27 etc. 
 
