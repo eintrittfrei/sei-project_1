@@ -57,7 +57,7 @@ background-size: contain;
   
 }
 
-.bullet {
+.grid div.bullet {
   background-image: url(/Users/olecastronascimento/development/sei-project_1/assets/lipstick-clipart-clear-background-transparent.png);
   background-size: contain;
   background-repeat: no-repeat;

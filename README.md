@@ -50,15 +50,23 @@ movement for drag queens moving sideways and downwards on loop/ interval . with 
 
 
 
-drag queen movement: 
+drag queens/ aliens movement: 
+-starting at position 10
+-select all squares in grid .grid with variable array of squares with numbers
+- use grid coordinates to move along grid 
+numbers +/- 10 = x 
+numbers +/- 1 = y 
+-create axis x and y 
+- movement with x +=1 and y +=1 
+- define end of row 
 
--select all squares in grid .grid with variable 
--current postion 
+-current postion 10 moving right until end of row 
+movign down by one
+then movign left until end of row 
 
-function dragsMove() {
-  squares[curentposition].classList.add('dragsclass') // to show drag at start position 
-   
-}
+
+
+
 
 
 let currentPosition = 10 // want it to move to 11 then 12 etc. until 19 then move to 29 then move left to 28, 27 etc. 

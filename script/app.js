@@ -15,7 +15,6 @@ function init() {
 
   // Lipstick shooter - position 
   const lipClass = 'lipstick' //
-  const lipStartPosition = 84 // startign posititon of lipstick 
   let lipCurrentPosition = 84 // current postition of lipstick 
 
 
@@ -24,16 +23,17 @@ function init() {
   //const pointsShot = document.querySelector('#points-display') // select points display 
   //const livesLeft = document.querySelectorAll('#lives-display') //select lives display 
 
-  const dragClass = 'drags'
-  const dragStartPosition = 10
+  // variables for aliens
+  const dragClass = 'drags' 
   let dragCurrentPosition = 10
   let dragTimer
 
 
-
-
-
-
+  // variables for shooting
+  const bullet = 'bullet'
+  const bulletStart = lipCurrentPosition 
+  let bulletCurrentPosition = bulletStart
+  let bulletTimer
 
   // GRID
 
@@ -52,17 +52,17 @@ function init() {
   //Add Lipstick to grid 
   function addLipstick(position) {
     cells[position].classList.add(lipClass)
-    //console.log(position)
+    //console.log(lipClass[position])
   }
   //Remove lipstick from Grid-call to remove
   function removeLip(position) {
     cells[position].classList.remove(lipClass)
   }
-  addLipstick(lipStartPosition) //call function to add lipstick 
+  addLipstick(lipCurrentPosition) //call function to add lipstick 
   //console.log(addLipstick)
 
-  // Move Lipstick 
-  function handleKeyUp(event) {
+  // Move Lipstick shooter 
+  function gameController(event) {
     const key = event.keyCode 
     //console.log('current position', lipCurrentPosition)
     removeLip(lipCurrentPosition) 
@@ -94,7 +94,9 @@ function init() {
     cells[position].classList.remove(dragClass)
   }
 
-  addDrags(dragStartPosition)
+  addDrags(dragCurrentPosition)
+
+
 
   /*function startGame(){
     //removeDrags(dragCurrentPosition)
@@ -111,7 +113,7 @@ function init() {
   }
 */
 
-
+// BELOW working code: 
   function startGame(){
     //removeDrags(dragCurrentPosition)
     dragTimer = setInterval(() => {
@@ -126,12 +128,13 @@ function init() {
         dragCurrentPosition--
       } else if (dragCurrentPosition === 20) {
         removeDrags(dragCurrentPosition)
-        dragCurrentPosition = 30 // works until this point 
+        dragCurrentPosition = 30 // THEN REPEATS between 20 - 29 
         return
       } 
       addDrags(dragCurrentPosition)
     },1000)
   }
+
 
  /* function startGame2(){
     dragTimer2 = setInterval(() => {
@@ -149,15 +152,75 @@ function init() {
 
 
 
-// Shooting motion 
+// Shooting motion BULLET
+  
+
+
+
+  //Add bullet to grid 
+  function addBullet(position) {
+    cells[position].classList.add(bullet)
+    //console.log(position)
+  }
+  //Remove bullet from Grid-call to remove
+  function removeBullet(position) {
+    cells[position].classList.remove(bullet)
+  }
+  
+
+  //addBullet(bulletStart) //call function to add bullet 
+  //console.log(addBullet)
+
+  
+  // Shooting/ move bullet 
+  //function handleShoot(event) {
+    //const key = event.keyCode 
+    //console.log('current position', lipCurrentPosition)
+   
+ //const spaceBar = keycode === 32
+
+
+
+   // document.addEventListener('keydown', event => {
+     // if (event.keycode || key === 32)
+    //} )
+
+
+  function shootBullet(event){
+    const key = event.keyCode
+    if ( key  === 32) {
+      addBullet(bulletStart) // shooting on any key pressed not just 32 why? 
+    }
+    bulletTimer = setInterval(() => {
+      removeBullet(bulletCurrentPosition)
+      bulletCurrentPosition = bulletCurrentPosition - width
+      addBullet(bulletCurrentPosition)
+    }, 500) 
+  }
+
+
+   /* //console.log('keyCode:', event.keyCode)
+    if (key === 32)  {
+      addBullet(bulletStart)
+    } else if (key === 39 && lipCurrentPosition % width !== width - 1){
+      lipCurrentPosition++
+    } else {
+      //console.log('InvalidKey')
+    }
+    //console.log('position after redefining', lipCurrentPosition)
+    addBullet(bulletStart)
+  } */
+
+
 
 
 
   // Event listeneners 
 
   startButton.addEventListener('click', startGame)
-
-  document.addEventListener('keyup', handleKeyUp)
+  document.addEventListener('keyup', shootBullet)
+  document.addEventListener('keyup', gameController)
+  
   
 
 
