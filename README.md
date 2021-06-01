@@ -51,6 +51,7 @@ movement for drag queens moving sideways and downwards on loop/ interval . with 
 
 
 drag queens/ aliens movement: 
+- 
 -starting at position 10
 -select all squares in grid .grid with variable array of squares with numbers
 - use grid coordinates to move along grid 

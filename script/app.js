@@ -15,6 +15,7 @@ function init() {
 
   // Lipstick shooter - position 
   const lipClass = 'lipstick' //
+  const lipStartPosition = 84
   let lipCurrentPosition = 84 // current postition of lipstick 
 
 
@@ -52,7 +53,7 @@ const drags = document.querySelector('.drags', '.drags2', '.drags3', '.drags4')
 
   // variables for shooting
   const bullet = 'bullet'
-  const bulletStart = lipCurrentPosition 
+  const bulletStart = lipCurrentPosition - 10 
   let bulletCurrentPosition = bulletStart
   let bulletTimer
 
@@ -171,41 +172,52 @@ const drags = document.querySelector('.drags', '.drags2', '.drags3', '.drags4')
 */
  // ENABLE BACK FROM HERE: 
   function startGame() {
-    addDrags(dragStartposition)
-    dragTimer = setInterval(() => {
-      //if (dragCurrentPosition % width !== dragCurrentPosition - 1) {
-      //clearInterval(dragTimer)
-      //return
-      // }
+    addDrags(dragStartposition) // makes this stand alone function here 
+    moveRight()
+  }
+    
+
+  // one function movign right + one function moving left 
+  //if (dragCurrentPosition % width !== dragCurrentPosition - 1) {
+  //clearInterval(dragTimer)
+  //return
+  // }
+  function moveRight() {
+    dragTimer = setInterval(() => { 
       removeDrags(dragCurrentPosition)
       dragCurrentPosition = dragCurrentPosition + 1
       addDrags(dragCurrentPosition)
-      if (dragCurrentPosition === width + 10) {
+      console.log(dragCurrentPosition)
+      if (dragCurrentPosition % width === 0) {
         removeDrags(dragCurrentPosition)
-        dragCurrentPosition = width + 19
+        //console.log(dragCurrentPosition)
+        dragCurrentPosition = (dragCurrentPosition - 1) + width 
         addDrags(dragCurrentPosition)
         clearInterval(dragTimer)
-        startGame2()
+        console.log(dragCurrentPosition)
+        moveLeft()
       }
-    }, 200)
+    }, 500)
   }
 
-  function startGame2(){
+  function moveLeft(){
     dragTimer = setInterval(() => {
       removeDrags(dragCurrentPosition)
       dragCurrentPosition = dragCurrentPosition - 1
       addDrags(dragCurrentPosition)
-      if (dragCurrentPosition === width + 9) {
+      //console.log(dragCurrentPosition)
+      if (dragCurrentPosition % width === 0) {
         removeDrags(dragCurrentPosition)
-        dragCurrentPosition = width + 20
+        dragCurrentPosition = (dragCurrentPosition - 1) + width
+        //console.log(dragCurrentPosition)
         addDrags(dragCurrentPosition)
         clearInterval(dragTimer)
-        startGame3()
+        //moveLeft()
       }
 
-    }, 200)
+    }, 500)
   }
-
+/*
   function startGame3() {
     dragTimer = setInterval(() => {
       removeDrags(dragCurrentPosition)
@@ -271,7 +283,7 @@ const drags = document.querySelector('.drags', '.drags2', '.drags3', '.drags4')
     }, 200)
   }
 
-
+*/
 
 
 
@@ -291,7 +303,7 @@ const drags = document.querySelector('.drags', '.drags2', '.drags3', '.drags4')
 */
 
 
-  // GAME CONTROLLER RU PAUL/ lipstick shooter:   
+  // GAME CONTROLLER RU PAUL/ lipstick shooter:   WORKING
 
   //Add Lipstick to grid 
   function addLipstick(position) {
@@ -302,7 +314,7 @@ const drags = document.querySelector('.drags', '.drags2', '.drags3', '.drags4')
   function removeLip(position) {
     cells[position].classList.remove(lipClass)
   }
-  addLipstick(lipCurrentPosition) //call function to add lipstick 
+  addLipstick(lipStartPosition) //call function to add lipstick 
   //console.log(addLipstick)
 
   // Move Lipstick shooter 
@@ -320,6 +332,7 @@ const drags = document.querySelector('.drags', '.drags2', '.drags3', '.drags4')
     }
     //console.log('position after redefining', lipCurrentPosition)
     addLipstick(lipCurrentPosition)
+    console.log(lipCurrentPosition)
   }
 
   
@@ -327,14 +340,17 @@ const drags = document.querySelector('.drags', '.drags2', '.drags3', '.drags4')
 
 
 // Shooting motion BULLET
-  
 
+// ISSUES: bullet only shoots once
+// intervall doesn't seem to stop 
+// space bar will also fire the start button again if mouse not moved 
+// 
 
 
   //Add bullet to grid 
   function addBullet(position) {
     cells[position].classList.add(bullet)
-    //console.log(position)
+    console.log(position)
   }
   //Remove bullet from Grid-call to remove
   function removeBullet(position) {
@@ -344,19 +360,21 @@ const drags = document.querySelector('.drags', '.drags2', '.drags3', '.drags4')
   function shootBullet(event){
     const key = event.keyCode
     if ( key  === 32) {
-      addBullet(bulletStart) // shooting on any key pressed not just 32 why? 
-    }
-    bulletTimer = setInterval(() => {
-      removeBullet(bulletCurrentPosition)
-      bulletCurrentPosition = bulletCurrentPosition - width
-      addBullet(bulletCurrentPosition)
-      if (bulletCurrentPosition === dragCurrentPosition) {
-        clearInterval(bulletTimer)
-        removeDrags(dragCurrentPosition)
+      addBullet(bulletStart)
+      bulletTimer = setInterval(() => {
+        //console.log('bullet start =>', bulletStart)
         removeBullet(bulletCurrentPosition)
-        return
-      }
-    }, 500)     
+        //console.log('bullet current =>', bulletCurrentPosition)
+        bulletCurrentPosition -= width
+        addBullet(bulletCurrentPosition)
+        if (bulletCurrentPosition <= width) {
+          removeBullet(bulletCurrentPosition)
+          clearInterval(bulletTimer)
+          return
+        }
+      }, 500)     
+    }
+    
   }
  
 
