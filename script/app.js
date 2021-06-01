@@ -23,10 +23,31 @@ function init() {
   //const pointsShot = document.querySelector('#points-display') // select points display 
   //const livesLeft = document.querySelectorAll('#lives-display') //select lives display 
 
-  // variables for aliens
-  const dragClass = 'drags' 
+  // variables for aliens/ DRAGS
+  // DRAG 1
+  const dragClass = 'drags'
+  const dragStartposition = 10
   let dragCurrentPosition = 10
   let dragTimer
+
+  /*// DRAG 2
+  const dragClass2 = 'drags2' 
+
+  // DRAG 3
+  const dragClass3 = 'drags3'
+
+  // DRAG 4
+  const dragClass4 = 'drags4'
+
+*/
+
+
+  // All DRAGS Array  DRAGS 1-4
+
+  const allDragsSelected = ['drags', 'drags2', 'drags3', 'drags4']
+  console.log(allDragsSelected)
+const drags = document.querySelector('.drags', '.drags2', '.drags3', '.drags4')
+
 
 
   // variables for shooting
@@ -47,43 +68,11 @@ function init() {
 
 
 
-  // GAME CONTROLLER RU PAUL:   
 
-  //Add Lipstick to grid 
-  function addLipstick(position) {
-    cells[position].classList.add(lipClass)
-    //console.log(lipClass[position])
-  }
-  //Remove lipstick from Grid-call to remove
-  function removeLip(position) {
-    cells[position].classList.remove(lipClass)
-  }
-  addLipstick(lipCurrentPosition) //call function to add lipstick 
-  //console.log(addLipstick)
-
-  // Move Lipstick shooter 
-  function gameController(event) {
-    const key = event.keyCode 
-    //console.log('current position', lipCurrentPosition)
-    removeLip(lipCurrentPosition) 
-    //console.log('keyCode:', event.keyCode)
-    if (key === 37 && lipCurrentPosition % width !== 0)  {
-      lipCurrentPosition--
-    } else if (key === 39 && lipCurrentPosition % width !== width - 1){
-      lipCurrentPosition++
-    } else {
-      //console.log('InvalidKey')
-    }
-    //console.log('position after redefining', lipCurrentPosition)
-    addLipstick(lipCurrentPosition)
-  }
-
-  
-
-
+  //        START GAME 
   //DRAG QUEENS MOVING: WORKING adding DRAG
 
-  //Add drag to grid 
+  // DRAG 1
   function addDrags(position) {
     cells[position].classList.add(dragClass)
     //console.log('lips position passed in ', position)
@@ -96,6 +85,51 @@ function init() {
 
   addDrags(dragCurrentPosition)
 
+/*
+  // DRAG 2
+  function addDrags2(position) {
+    cells[position].classList.add(dragClass2)
+    //console.log('lips position passed in ', position)
+
+  }
+  //remove drag from grid 
+  function removeDrags2(position) {
+    cells[position].classList.remove(dragClass2)
+  }
+
+  addDrags2(dragCurrentPosition + 1)
+
+
+
+  // DRAG 3
+  function addDrags3(position) {
+    cells[position].classList.add(dragClass3)
+    //console.log('lips position passed in ', position)
+
+  }
+  //remove drag from grid 
+  function removeDrags3(position) {
+    cells[position].classList.remove(dragClass3)
+  }
+
+  addDrags3(dragCurrentPosition + 2)
+
+
+  // DRAG 3
+
+  function addDrags4(position) {
+    cells[position].classList.add(dragClass4)
+    //console.log('lips position passed in ', position)
+
+  }
+  //remove drag from grid 
+  function removeDrags4(position) {
+    cells[position].classList.remove(dragClass4)
+  }
+
+  addDrags4(dragCurrentPosition + 3)
+
+*/
 
 
   /*function startGame(){
@@ -113,7 +147,7 @@ function init() {
   }
 */
 
-// BELOW working code: 
+// 
   /*function startGame(){
     //removeDrags(dragCurrentPosition)
     dragTimer = setInterval(() => {
@@ -135,9 +169,9 @@ function init() {
     },1000)
   }
 */
-
+ // ENABLE BACK FROM HERE: 
   function startGame() {
-    addDrags(dragCurrentPosition)
+    addDrags(dragStartposition)
     dragTimer = setInterval(() => {
       //if (dragCurrentPosition % width !== dragCurrentPosition - 1) {
       //clearInterval(dragTimer)
@@ -210,16 +244,36 @@ function init() {
       removeDrags(dragCurrentPosition)
       dragCurrentPosition = dragCurrentPosition + 1
       addDrags(dragCurrentPosition)
-      if (dragCurrentPosition === width + 49) {
+      if (dragCurrentPosition === width + 40) {
         removeDrags(dragCurrentPosition)
-        dragCurrentPosition = 69
+        dragCurrentPosition = + 10
         addDrags(dragCurrentPosition)
         clearInterval(dragTimer)
-        startGame5()
+        startGame6()
       }
 
     }, 200)
   }
+
+  function startGame6(){
+    dragTimer = setInterval(() => {
+      removeDrags(dragCurrentPosition)
+      dragCurrentPosition = dragCurrentPosition - 1
+      addDrags(dragCurrentPosition)
+      if (dragCurrentPosition === 60) {
+        removeDrags(dragCurrentPosition)
+        dragCurrentPosition = 70
+        addDrags(dragCurrentPosition)
+        clearInterval(dragTimer)
+        //startGame7()
+      }
+
+    }, 200)
+  }
+
+
+
+
 
 
  /* function startGame2(){
@@ -235,6 +289,40 @@ function init() {
     }, 1000)
 
 */
+
+
+  // GAME CONTROLLER RU PAUL/ lipstick shooter:   
+
+  //Add Lipstick to grid 
+  function addLipstick(position) {
+    cells[position].classList.add(lipClass)
+    //console.log(lipClass[position])
+  }
+  //Remove lipstick from Grid-call to remove
+  function removeLip(position) {
+    cells[position].classList.remove(lipClass)
+  }
+  addLipstick(lipCurrentPosition) //call function to add lipstick 
+  //console.log(addLipstick)
+
+  // Move Lipstick shooter 
+  function gameController(event) {
+    const key = event.keyCode 
+    //console.log('current position', lipCurrentPosition)
+    removeLip(lipCurrentPosition) 
+    //console.log('keyCode:', event.keyCode)
+    if (key === 37 && lipCurrentPosition % width !== 0)  {
+      lipCurrentPosition--
+    } else if (key === 39 && lipCurrentPosition % width !== width - 1){
+      lipCurrentPosition++
+    } else {
+      //console.log('InvalidKey')
+    }
+    //console.log('position after redefining', lipCurrentPosition)
+    addLipstick(lipCurrentPosition)
+  }
+
+  
 
 
 
@@ -262,9 +350,15 @@ function init() {
       removeBullet(bulletCurrentPosition)
       bulletCurrentPosition = bulletCurrentPosition - width
       addBullet(bulletCurrentPosition)
-    }, 500) 
+      if (bulletCurrentPosition === dragCurrentPosition) {
+        clearInterval(bulletTimer)
+        removeDrags(dragCurrentPosition)
+        removeBullet(bulletCurrentPosition)
+        return
+      }
+    }, 500)     
   }
-
+ 
 
   //addBullet(bulletStart) //call function to add bullet 
   //console.log(addBullet)
