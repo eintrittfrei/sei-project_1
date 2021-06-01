@@ -114,7 +114,7 @@ function init() {
 */
 
 // BELOW working code: 
-  function startGame(){
+  /*function startGame(){
     //removeDrags(dragCurrentPosition)
     dragTimer = setInterval(() => {
       if (dragCurrentPosition < 19) { 
@@ -133,6 +133,92 @@ function init() {
       } 
       addDrags(dragCurrentPosition)
     },1000)
+  }
+*/
+
+  function startGame() {
+    addDrags(dragCurrentPosition)
+    dragTimer = setInterval(() => {
+      //if (dragCurrentPosition % width !== dragCurrentPosition - 1) {
+      //clearInterval(dragTimer)
+      //return
+      // }
+      removeDrags(dragCurrentPosition)
+      dragCurrentPosition = dragCurrentPosition + 1
+      addDrags(dragCurrentPosition)
+      if (dragCurrentPosition === width + 10) {
+        removeDrags(dragCurrentPosition)
+        dragCurrentPosition = width + 19
+        addDrags(dragCurrentPosition)
+        clearInterval(dragTimer)
+        startGame2()
+      }
+    }, 200)
+  }
+
+  function startGame2(){
+    dragTimer = setInterval(() => {
+      removeDrags(dragCurrentPosition)
+      dragCurrentPosition = dragCurrentPosition - 1
+      addDrags(dragCurrentPosition)
+      if (dragCurrentPosition === width + 9) {
+        removeDrags(dragCurrentPosition)
+        dragCurrentPosition = width + 20
+        addDrags(dragCurrentPosition)
+        clearInterval(dragTimer)
+        startGame3()
+      }
+
+    }, 200)
+  }
+
+  function startGame3() {
+    dragTimer = setInterval(() => {
+      removeDrags(dragCurrentPosition)
+      dragCurrentPosition = dragCurrentPosition + 1
+      addDrags(dragCurrentPosition)
+      if (dragCurrentPosition === width + 30) {
+        removeDrags(dragCurrentPosition)
+        dragCurrentPosition = width + 39
+        addDrags(dragCurrentPosition)
+        clearInterval(dragTimer)
+        startGame4()
+      }
+    }, 200)
+  }
+
+
+  function startGame4(){
+    dragTimer = setInterval(() => {
+      removeDrags(dragCurrentPosition)
+      dragCurrentPosition = dragCurrentPosition - 1
+      addDrags(dragCurrentPosition)
+      if (dragCurrentPosition === width + 29) {
+        removeDrags(dragCurrentPosition)
+        dragCurrentPosition = 50
+        addDrags(dragCurrentPosition)
+        clearInterval(dragTimer)
+        startGame5()
+      }
+
+    }, 200)
+  }
+
+
+  function startGame5(){
+    dragTimer = setInterval(() => {
+      removeDrags(dragCurrentPosition)
+      dragCurrentPosition = dragCurrentPosition + 1
+      addDrags(dragCurrentPosition)
+      if (dragCurrentPosition === width + 49) {
+        removeDrags(dragCurrentPosition)
+        dragCurrentPosition = 69
+        addDrags(dragCurrentPosition)
+        clearInterval(dragTimer)
+        startGame5()
+      }
+
+    }, 200)
   }
 
 
@@ -167,6 +253,18 @@ function init() {
     cells[position].classList.remove(bullet)
   }
   
+  function shootBullet(event){
+    const key = event.keyCode
+    if ( key  === 32) {
+      addBullet(bulletStart) // shooting on any key pressed not just 32 why? 
+    }
+    bulletTimer = setInterval(() => {
+      removeBullet(bulletCurrentPosition)
+      bulletCurrentPosition = bulletCurrentPosition - width
+      addBullet(bulletCurrentPosition)
+    }, 500) 
+  }
+
 
   //addBullet(bulletStart) //call function to add bullet 
   //console.log(addBullet)
@@ -186,19 +284,6 @@ function init() {
     //} )
 
 
-  function shootBullet(event){
-    const key = event.keyCode
-    if ( key  === 32) {
-      addBullet(bulletStart) // shooting on any key pressed not just 32 why? 
-    }
-    bulletTimer = setInterval(() => {
-      removeBullet(bulletCurrentPosition)
-      bulletCurrentPosition = bulletCurrentPosition - width
-      addBullet(bulletCurrentPosition)
-    }, 500) 
-  }
-
-
    /* //console.log('keyCode:', event.keyCode)
     if (key === 32)  {
       addBullet(bulletStart)
@@ -214,11 +299,10 @@ function init() {
 
 
 
-
   // Event listeneners 
 
   startButton.addEventListener('click', startGame)
-  document.addEventListener('keyup', shootBullet)
+  document.addEventListener('keydown', shootBullet)
   document.addEventListener('keyup', gameController)
   
   
@@ -227,11 +311,6 @@ function init() {
 
 
   
-
-
-
-
-
 
 
 
