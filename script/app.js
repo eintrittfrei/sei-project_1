@@ -46,10 +46,9 @@ function init() {
   // All DRAGS Array  DRAGS 1-4
 
   const allDragsSelected = ['drags', 'drags2', 'drags3', 'drags4']
+  //console.log(allDragsSelected)
+  const drags = document.querySelector('.drags', '.drags2', '.drags3', '.drags4')
   console.log(allDragsSelected)
-const drags = document.querySelector('.drags', '.drags2', '.drags3', '.drags4')
-
-
 
   // variables for shooting
   const bullet = 'bullet'
@@ -170,7 +169,9 @@ const drags = document.querySelector('.drags', '.drags2', '.drags3', '.drags4')
     },1000)
   }
 */
- // ENABLE BACK FROM HERE: 
+ //
+
+
   function startGame() {
     addDrags(dragStartposition) // makes this stand alone function here 
     moveRight()
@@ -187,7 +188,7 @@ const drags = document.querySelector('.drags', '.drags2', '.drags3', '.drags4')
       removeDrags(dragCurrentPosition)
       dragCurrentPosition = dragCurrentPosition + 1
       addDrags(dragCurrentPosition)
-      console.log(dragCurrentPosition)
+      //console.log(dragCurrentPosition)
       if (dragCurrentPosition % width === 0) {
         removeDrags(dragCurrentPosition)
         //console.log(dragCurrentPosition)
@@ -197,7 +198,7 @@ const drags = document.querySelector('.drags', '.drags2', '.drags3', '.drags4')
         console.log(dragCurrentPosition)
         moveLeft()
       }
-    }, 500)
+    }, 200)
   }
 
   function moveLeft(){
@@ -205,18 +206,24 @@ const drags = document.querySelector('.drags', '.drags2', '.drags3', '.drags4')
       removeDrags(dragCurrentPosition)
       dragCurrentPosition = dragCurrentPosition - 1
       addDrags(dragCurrentPosition)
-      //console.log(dragCurrentPosition)
+      console.log(dragCurrentPosition)
       if (dragCurrentPosition % width === 0) {
         removeDrags(dragCurrentPosition)
-        dragCurrentPosition = (dragCurrentPosition - 1) + width
-        //console.log(dragCurrentPosition)
+        console.log(dragCurrentPosition)
+        //dragCurrentPosition = (dragCurrentPosition + 1) + width
+        dragCurrentPosition += width
+        console.log(dragCurrentPosition)
         addDrags(dragCurrentPosition)
         clearInterval(dragTimer)
-        //moveLeft()
+        moveRight()
       }
 
-    }, 500)
+    }, 200)
   }
+
+
+
+
 /*
   function startGame3() {
     dragTimer = setInterval(() => {

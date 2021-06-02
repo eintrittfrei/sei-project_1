@@ -27,7 +27,7 @@ body {
 }
 
 .grid-wrapper {
-  height: 100%;
+  height: 700px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,7 +43,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  height: 800px;
+  height: 700px;
   width: 800px;
 }
 
