@@ -2,7 +2,6 @@ function init() {
   console.log('js up and running')
 
 
-
   // Grid
   const grid = document.querySelector('.grid')
   //console.log(grid)
@@ -13,16 +12,26 @@ function init() {
   const cells = []
   //console.log(cells)
 
+  for (let i = 0; i < cellCount; i++) {
+    //console.log(cells)
+    const cell = document.createElement('div')
+    //cell.innerText = i
+    grid.appendChild(cell)
+    cells.push(cell)
+  }
+
+ 
+
   // Lipstick shooter - position 
   const lipClass = 'lipstick' //
   const lipStartPosition = 84
   let lipCurrentPosition = 84 // current postition of lipstick 
 
 
-  //const squaresGrid = document.querySelectorAll('.grid') // select the divs in the grid 
+  const squaresGrid = document.querySelectorAll('.grid') // select the divs in the grid 
+  console.log(squaresGrid)
   const startButton = document.querySelector('#start') // select start button 
-  //const pointsShot = document.querySelector('#points-display') // select points display 
-  //const livesLeft = document.querySelectorAll('#lives-display') //select lives display 
+ 
 
   // variables for aliens/ DRAGS
   // DRAG 1
@@ -52,38 +61,20 @@ function init() {
 
   // variables for shooting
   const bullet = 'bullet'
-  const bulletStart = lipCurrentPosition - 10 
+  const bulletStart = lipCurrentPosition - 10 // inside function addBullet()
   let bulletCurrentPosition = bulletStart
   let bulletTimer
 
   // GRID
 
-  for (let i = 0; i < cellCount; i++) {
-    //console.log(cells)
-    const cell = document.createElement('div')
-    cell.innerText = i
-    grid.appendChild(cell)
-    cells.push(cell)
-  }
-
+ 
 
 
 
   //        START GAME 
   //DRAG QUEENS MOVING: WORKING adding DRAG
 
-  // DRAG 1
-  function addDrags(position) {
-    cells[position].classList.add(dragClass)
-    //console.log('lips position passed in ', position)
-
-  }
-  //remove drag from grid 
-  function removeDrags(position) {
-    cells[position].classList.remove(dragClass)
-  }
-
-  addDrags(dragCurrentPosition)
+  
 
 /*
   // DRAG 2
@@ -169,7 +160,19 @@ function init() {
     },1000)
   }
 */
- //
+ 
+// DRAG 1
+  function addDrags(position) {
+    cells[position].classList.add(dragClass)
+    //console.log('lips position passed in ', position)
+
+  }
+  //remove drag from grid 
+  function removeDrags(position) {
+    cells[position].classList.remove(dragClass)
+  }
+
+  //addDrags(dragCurrentPosition)
 
 
   function startGame() {
@@ -189,6 +192,7 @@ function init() {
       dragCurrentPosition = dragCurrentPosition + 1
       addDrags(dragCurrentPosition)
       //console.log(dragCurrentPosition)
+     
       if (dragCurrentPosition % width === 0) {
         removeDrags(dragCurrentPosition)
         //console.log(dragCurrentPosition)
@@ -198,7 +202,7 @@ function init() {
         console.log(dragCurrentPosition)
         moveLeft()
       }
-    }, 200)
+    }, 1000)
   }
 
   function moveLeft(){
@@ -207,7 +211,7 @@ function init() {
       dragCurrentPosition = dragCurrentPosition - 1
       addDrags(dragCurrentPosition)
       console.log(dragCurrentPosition)
-      if (dragCurrentPosition % width === 0) {
+      if (dragCurrentPosition % width === 0 ) {
         removeDrags(dragCurrentPosition)
         console.log(dragCurrentPosition)
         //dragCurrentPosition = (dragCurrentPosition + 1) + width
@@ -215,12 +219,21 @@ function init() {
         console.log(dragCurrentPosition)
         addDrags(dragCurrentPosition)
         clearInterval(dragTimer)
-        moveRight()
+        checkHit()
+        //moveRight()
       }
 
-    }, 200)
+    }, 1000)
   }
 
+  function checkHit() {
+    if (dragCurrentPosition === bulletCurrentPosition){
+      removeDrags(dragCurrentPosition)
+      clearInterval(dragTimer)
+    } else {
+      moveRight()
+    }
+  }
 
 
 
@@ -339,12 +352,8 @@ function init() {
     }
     //console.log('position after redefining', lipCurrentPosition)
     addLipstick(lipCurrentPosition)
-    console.log(lipCurrentPosition)
+    //console.log(lipCurrentPosition)
   }
-
-  
-
-
 
 // Shooting motion BULLET
 
@@ -352,7 +361,6 @@ function init() {
 // intervall doesn't seem to stop 
 // space bar will also fire the start button again if mouse not moved 
 // 
-
 
   //Add bullet to grid 
   function addBullet(position) {
@@ -364,26 +372,39 @@ function init() {
     cells[position].classList.remove(bullet)
   }
   
+  
   function shootBullet(event){
     const key = event.keyCode
     if ( key  === 32) {
-      addBullet(bulletStart)
+      addBullet(lipCurrentPosition - 10)
+      bulletCurrentPosition = lipCurrentPosition - 10
       bulletTimer = setInterval(() => {
         //console.log('bullet start =>', bulletStart)
         removeBullet(bulletCurrentPosition)
         //console.log('bullet current =>', bulletCurrentPosition)
         bulletCurrentPosition -= width
         addBullet(bulletCurrentPosition)
-        if (bulletCurrentPosition <= width) {
-          removeBullet(bulletCurrentPosition)
+        
+        if (bulletCurrentPosition < 10) {
+          //removeBullet(bulletCurrentPosition)
           clearInterval(bulletTimer)
+          removeBullet(bulletCurrentPosition)
           return
         }
-      }, 500)     
+      }, 200)     
     }
-    
+        
   }
  
+
+// BULLET EVENT
+
+  function bulletHitTarget() {
+    if (dragCurrentPosition === bulletCurrentPosition) {
+      removeDrags(dragCurrentPosition)
+    }
+  }
+
 
   //addBullet(bulletStart) //call function to add bullet 
   //console.log(addBullet)
@@ -418,22 +439,24 @@ function init() {
 
 
 
+
+  // SHOOTING ALIENS 
+
+
+
+
+
+
+
+
+
   // Event listeneners 
 
-  startButton.addEventListener('click', startGame)
+  startButton.addEventListener('click', startGame, bulletHitTarget)
   document.addEventListener('keydown', shootBullet)
   document.addEventListener('keyup', gameController)
   
   
-
-
-
-
-  
-
-
-
-
 
 
 

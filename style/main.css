@@ -7,7 +7,7 @@ body {
   height: 100vh;
   margin: 0;
   color: black;
-  background-color: white;
+  background-image: url('/Users/olecastronascimento/development/sei-project_1/assets/4853433.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -36,20 +36,19 @@ body {
 .grid {
   align-items: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);
-  background-image: url;
-  background-color: white;
+  background-image: url('');
   background-repeat: no-repeat;
   color: black;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  height: 700px;
-  width: 800px;
+  height: 600px;
+  width: 700px;
 }
 
 .grid div {  
   flex-grow: 1;
-  border: solid 0.5px black;
+  
   height: 10%;
   width: 10%;
   font-size: 60%;
