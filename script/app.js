@@ -15,7 +15,7 @@ function init() {
   for (let i = 0; i < cellCount; i++) {
     //console.log(cells)
     const cell = document.createElement('div')
-    cell.innerText = i
+    //cell.innerText = i
     grid.appendChild(cell)
     cells.push(cell)
   }
@@ -28,13 +28,17 @@ function init() {
   let lipCurrentPosition = 84 // current postition of lipstick 
 
 
-  //const squaresGrid = document.querySelectorAll('.grid') // select the divs in the grid 
+  const squaresGrid = document.querySelectorAll('.grid') // select the divs in the grid 
   //console.log(squaresGrid)
   const startButton = document.querySelector('#start') // select start button 
   const scoreCounter = document.querySelector('#points-display')
   const livesCounter = document.querySelector('#lives-display')
   let score = 0
   let lives = 3
+
+
+  // AUDIO
+
 
   // variables for aliens/ DRAGS
   // DRAG 1
@@ -57,10 +61,10 @@ function init() {
 
   // All DRAGS Array  DRAGS 1-4
 
-  //const allDragsSelected = ['drags', 'drags2', 'drags3', 'drags4']
+  const allDragsSelected = ['drags', 'drags2', 'drags3', 'drags4']
   //console.log(allDragsSelected)
   //const drags = document.querySelector('.drags', '.drags2', '.drags3', '.drags4')
-  //console.log(allDragsSelected)
+  console.log(allDragsSelected)
 
   // variables for shooting
   const bullet = 'bullet'
@@ -195,7 +199,6 @@ function init() {
         removeDrags(dragCurrentPosition)
         console.log('point for virus')
         counter()
-        addDrags(dragStartposition)
         clearInterval(dragTimer)
         return
       }
@@ -221,7 +224,7 @@ function init() {
         removeDrags(dragCurrentPosition)
         console.log('point for virus')
         counter()
-        addDrags(dragStartposition)
+
         clearInterval(dragTimer)
         return
       }
@@ -247,6 +250,7 @@ function init() {
   function counter(){ 
     lives -= 1
     livesCounter.innerText = lives
+    addDrags(dragStartposition)
     console.log(dragCurrentPosition)
     if (lives === 0){
       console.log('you lost') 
@@ -360,6 +364,15 @@ function init() {
         
   }
  
+  function playsound(event) {
+    const key = event.keyCode
+    if (key === 32) {
+      const audio = new Audio('./Users/olecastronascimento/development/sei-project_1/assets/sounds/mixkit-quick-metal-transition-sweep-2639.wav')
+      audio.playsound()
+    }
+
+  }
+
 
 // BULLET EVENT
 
@@ -417,7 +430,8 @@ function init() {
   // Event listeneners 
 
   startButton.addEventListener('click', startGame)
-  document.addEventListener('keydown', shootBullet)
+  document.addEventListener('keydown', shootBullet, playsound)
+  console.log('key pressed', shootBullet)
   document.addEventListener('keyup', gameController)
   
   

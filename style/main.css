@@ -8,7 +8,7 @@ body {
   margin: 0;
   color: black;
   font-family: orbitron, sans-serif;
-  background-image: url(/Users/olecastronascimento/development/sei-project_1/assets/4853433.jpg);
+  background-image: url('/Users/olecastronascimento/development/sei-project_1/assets/1876.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -19,14 +19,14 @@ body {
 }
 .controls-wrapper {
   display: flex;
-  background-color: lightblue;
+
   width: 700px;
   padding: 20px;
   border-radius: 10px;
   box-shadow: rgb(0 0 0 / 50%) 0px 0px 20px 0px;
   justify-content: space-around;
-
- 
+  background: rgb(45,114,198);
+  background: radial-gradient(circle, rgba(45,114,198,1) 0%, rgba(7,93,232,0.6741071428571428) 52%);
 
 }
 #start {
@@ -34,10 +34,12 @@ body {
   background-color: #075de8;
   padding: 5px;
   font-family: orbitron, sans-serif;
-  border-radius: 100%;
   border: solid 1px;
-  height: 110px;
-  width: 110px;
+  letter-spacing: normal;
+  border-radius: 10px;
+  border-color: transparent;
+  letter-spacing: 2px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);
 }
 
 p.points {
@@ -46,7 +48,8 @@ p.points {
   align-content: stretch;
   justify-content: space-around;
   align-items: center;
-  color: #075de8;
+  color: white;
+  letter-spacing: 2px;
 }
 p.lives {
   display: flex;
@@ -54,7 +57,8 @@ p.lives {
   align-content: stretch;
   justify-content: space-around;
   align-items: center;
-  color:#075de8;
+  color:white;
+  letter-spacing: 2px;
 }
 
 span#points-display {
@@ -67,7 +71,7 @@ span#lives-display {
 }
 
 .grid-wrapper {
-  height: 700px;
+  height: 650px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -85,11 +89,10 @@ span#lives-display {
   height: 600px;
   width: 700px;
   border-radius: 10px;
-  background: rgb(0,61,136);
-  background: linear-gradient(0deg, rgba(0,61,136,1) 0%, rgba(7,93,232,1) 100%);
+  background: rgb(45,114,198);
+  background: radial-gradient(circle, rgba(45,114,198,1) 0%, rgba(7,93,232,0.500437675070028) 52%);
 
 }
-
 .grid div {  
   flex-grow: 1;
   height: 10%;
@@ -103,6 +106,7 @@ background-image: url('https://media.giphy.com/media/VUVx448gh1GshHxbHV/source.g
 background-repeat: no-repeat;
 background-size: contain;
 }
+
 
 .grid div.drags {
   background-image: url('https://media.giphy.com/media/co5VLnDuBaURxfDrfW/source.gif');

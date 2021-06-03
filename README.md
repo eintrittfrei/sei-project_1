@@ -72,3 +72,4 @@ then movign left until end of row
 
 let currentPosition = 10 // want it to move to 11 then 12 etc. until 19 then move to 29 then move left to 28, 27 etc. 
 
+https://media.giphy.com/media/co5VLnDuBaURxfDrfW/source.gif
