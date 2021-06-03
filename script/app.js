@@ -15,7 +15,7 @@ function init() {
   for (let i = 0; i < cellCount; i++) {
     //console.log(cells)
     const cell = document.createElement('div')
-    //cell.innerText = i
+    cell.innerText = i
     grid.appendChild(cell)
     cells.push(cell)
   }
@@ -28,10 +28,13 @@ function init() {
   let lipCurrentPosition = 84 // current postition of lipstick 
 
 
-  const squaresGrid = document.querySelectorAll('.grid') // select the divs in the grid 
-  console.log(squaresGrid)
+  //const squaresGrid = document.querySelectorAll('.grid') // select the divs in the grid 
+  //console.log(squaresGrid)
   const startButton = document.querySelector('#start') // select start button 
- 
+  const scoreCounter = document.querySelector('#points-display')
+  const livesCounter = document.querySelector('#lives-display')
+  let score = 0
+  let lives = 3
 
   // variables for aliens/ DRAGS
   // DRAG 1
@@ -54,10 +57,10 @@ function init() {
 
   // All DRAGS Array  DRAGS 1-4
 
-  const allDragsSelected = ['drags', 'drags2', 'drags3', 'drags4']
+  //const allDragsSelected = ['drags', 'drags2', 'drags3', 'drags4']
   //console.log(allDragsSelected)
-  const drags = document.querySelector('.drags', '.drags2', '.drags3', '.drags4')
-  console.log(allDragsSelected)
+  //const drags = document.querySelector('.drags', '.drags2', '.drags3', '.drags4')
+  //console.log(allDragsSelected)
 
   // variables for shooting
   const bullet = 'bullet'
@@ -171,12 +174,12 @@ function init() {
   function removeDrags(position) {
     cells[position].classList.remove(dragClass)
   }
-
+  addDrags(dragStartposition)
   //addDrags(dragCurrentPosition)
 
 
   function startGame() {
-    addDrags(dragStartposition) // makes this stand alone function here 
+  // makes this stand alone function here 
     moveRight()
   }
     
@@ -188,11 +191,18 @@ function init() {
   // }
   function moveRight() {
     dragTimer = setInterval(() => { 
+      if (dragCurrentPosition >= width * width - 20){
+        removeDrags(dragCurrentPosition)
+        console.log('point for virus')
+        counter()
+        addDrags(dragStartposition)
+        clearInterval(dragTimer)
+        return
+      }
       removeDrags(dragCurrentPosition)
       dragCurrentPosition = dragCurrentPosition + 1
       addDrags(dragCurrentPosition)
       //console.log(dragCurrentPosition)
-     
       if (dragCurrentPosition % width === 0) {
         removeDrags(dragCurrentPosition)
         //console.log(dragCurrentPosition)
@@ -202,11 +212,19 @@ function init() {
         console.log(dragCurrentPosition)
         moveLeft()
       }
-    }, 1000)
+    }, 200)
   }
 
   function moveLeft(){
     dragTimer = setInterval(() => {
+      if (dragCurrentPosition >= width * width - 20){
+        removeDrags(dragCurrentPosition)
+        console.log('point for virus')
+        counter()
+        addDrags(dragStartposition)
+        clearInterval(dragTimer)
+        return
+      }
       removeDrags(dragCurrentPosition)
       dragCurrentPosition = dragCurrentPosition - 1
       addDrags(dragCurrentPosition)
@@ -219,93 +237,39 @@ function init() {
         console.log(dragCurrentPosition)
         addDrags(dragCurrentPosition)
         clearInterval(dragTimer)
-        checkHit()
-        //moveRight()
+        moveRight()
       }
 
-    }, 1000)
+    }, 200)
   }
 
-  function checkHit() {
-    if (dragCurrentPosition === bulletCurrentPosition){
-      removeDrags(dragCurrentPosition)
-      clearInterval(dragTimer)
-    } else {
-      moveRight()
+  // counting lives deducted for player and points made/ called in moveRight and left functions: 
+  function counter(){ 
+    lives -= 1
+    livesCounter.innerText = lives
+    console.log(dragCurrentPosition)
+    if (lives === 0){
+      console.log('you lost') 
+      // works until this point 
     }
   }
 
 
+  // needs function for points if shooting events work. 
 
-/*
-  function startGame3() {
-    dragTimer = setInterval(() => {
+
+
+// not working 
+  /*function checkHit() {
+    if (bulletCurrentPosition === dragCurrentPosition) {
+      removeBullet(bulletCurrentPosition)
       removeDrags(dragCurrentPosition)
-      dragCurrentPosition = dragCurrentPosition + 1
-      addDrags(dragCurrentPosition)
-      if (dragCurrentPosition === width + 30) {
-        removeDrags(dragCurrentPosition)
-        dragCurrentPosition = width + 39
-        addDrags(dragCurrentPosition)
-        clearInterval(dragTimer)
-        startGame4()
-      }
-    }, 200)
-  }
-
-
-  function startGame4(){
-    dragTimer = setInterval(() => {
-      removeDrags(dragCurrentPosition)
-      dragCurrentPosition = dragCurrentPosition - 1
-      addDrags(dragCurrentPosition)
-      if (dragCurrentPosition === width + 29) {
-        removeDrags(dragCurrentPosition)
-        dragCurrentPosition = 50
-        addDrags(dragCurrentPosition)
-        clearInterval(dragTimer)
-        startGame5()
-      }
-
-    }, 200)
-  }
-
-
-  function startGame5(){
-    dragTimer = setInterval(() => {
-      removeDrags(dragCurrentPosition)
-      dragCurrentPosition = dragCurrentPosition + 1
-      addDrags(dragCurrentPosition)
-      if (dragCurrentPosition === width + 40) {
-        removeDrags(dragCurrentPosition)
-        dragCurrentPosition = + 10
-        addDrags(dragCurrentPosition)
-        clearInterval(dragTimer)
-        startGame6()
-      }
-
-    }, 200)
-  }
-
-  function startGame6(){
-    dragTimer = setInterval(() => {
-      removeDrags(dragCurrentPosition)
-      dragCurrentPosition = dragCurrentPosition - 1
-      addDrags(dragCurrentPosition)
-      if (dragCurrentPosition === 60) {
-        removeDrags(dragCurrentPosition)
-        dragCurrentPosition = 70
-        addDrags(dragCurrentPosition)
-        clearInterval(dragTimer)
-        //startGame7()
-      }
-
-    }, 200)
-  }
-
-*/
-
-
+      clearInterval(dragTimer)
+      console.log('HIT')
+    }
+    
+  }*/
+  
 
 
  /* function startGame2(){
@@ -399,11 +363,11 @@ function init() {
 
 // BULLET EVENT
 
-  function bulletHitTarget() {
+  /*function bulletHitTarget() {
     if (dragCurrentPosition === bulletCurrentPosition) {
       removeDrags(dragCurrentPosition)
     }
-  }
+  }*/
 
 
   //addBullet(bulletStart) //call function to add bullet 
@@ -452,7 +416,7 @@ function init() {
 
   // Event listeneners 
 
-  startButton.addEventListener('click', startGame, bulletHitTarget)
+  startButton.addEventListener('click', startGame)
   document.addEventListener('keydown', shootBullet)
   document.addEventListener('keyup', gameController)
   

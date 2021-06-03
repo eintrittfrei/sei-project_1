@@ -7,23 +7,63 @@ body {
   height: 100vh;
   margin: 0;
   color: black;
-  background-image: url('/Users/olecastronascimento/development/sei-project_1/assets/4853433.jpg');
+  font-family: orbitron, sans-serif;
+  background-image: url(/Users/olecastronascimento/development/sei-project_1/assets/4853433.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   
 }
 .controls-wrapper {
   display: flex;
-  margin-bottom: 10px;
+  background-color: lightblue;
+  width: 700px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: rgb(0 0 0 / 50%) 0px 0px 20px 0px;
+  justify-content: space-around;
+
+ 
+
 }
 #start {
-  color: black;
-  background-color: rgb(255, 0, 212);
+  color: white;
+  background-color: #075de8;
   padding: 5px;
+  font-family: orbitron, sans-serif;
+  border-radius: 100%;
+  border: solid 1px;
+  height: 110px;
+  width: 110px;
+}
+
+p.points {
+  display: flex;
+  flex-direction: row;
+  align-content: stretch;
+  justify-content: space-around;
+  align-items: center;
+  color: #075de8;
+}
+p.lives {
+  display: flex;
+  flex-direction: row;
+  align-content: stretch;
+  justify-content: space-around;
+  align-items: center;
+  color:#075de8;
+}
+
+span#points-display {
+  margin-left: 10px;
+  color: white  ;
+}
+span#lives-display {
+  margin-left: 10px;
+  color: white;
 }
 
 .grid-wrapper {
@@ -44,11 +84,14 @@ body {
   justify-content: center;
   height: 600px;
   width: 700px;
+  border-radius: 10px;
+  background: rgb(0,61,136);
+  background: linear-gradient(0deg, rgba(0,61,136,1) 0%, rgba(7,93,232,1) 100%);
+
 }
 
 .grid div {  
   flex-grow: 1;
-  
   height: 10%;
   width: 10%;
   font-size: 60%;
