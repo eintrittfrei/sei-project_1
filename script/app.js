@@ -49,7 +49,7 @@ function init() {
   // variables for shooting
   const bullet = 'bullet'
   const bulletStart = lipCurrentPosition - 10 // inside function addBullet()
-  let bulletCurrentPosition =  lipCurrentPosition - 20
+  let bulletCurrentPosition = lipCurrentPosition - 20
   let bulletTimer
   // GRID
   //        START GAME 
@@ -136,7 +136,6 @@ function init() {
   let trueOrFalse = true
   let shootingBullet = false
   function startGame() {
-    startButton.disabled = true
     // const key = event.keyCode
     setInterval(() => {
       if (trueOrFalse === true) {
@@ -145,12 +144,11 @@ function init() {
       if (trueOrFalse === false) {
         moveLeft()
       }
-      if (shootingBullet === true) {
-        shootBullet()
-        console.log('shooting')
-      }
-    }, 500)
-    startButton.disabled = false
+      // if (shootingBullet === true) {
+      //   shootBullet()
+      //   console.log('shooting')
+      // }
+    }, 1000)
     // makes this stand alone function here 
   }
   // one function movign right + one function moving left 
@@ -286,89 +284,58 @@ function init() {
     const key = event.keyCode
     if (key === 32) {
       shootingBullet = true
-      bulletCurrentPosition =  lipCurrentPosition - 20
+      bulletCurrentPosition = lipCurrentPosition - 20
+      shootBullet()
+    }
+    if (shootingBullet === false) { 
+      console.log('do nothing')
     }
   }
   const bulletStartPosition = lipCurrentPosition - 10
   function shootBullet() {
     // addBullet(lipCurrentPosition - 10)
-    if (shootingBullet === true) {
-      // removeBullet(lipCurrentPosition - 10)
-      addBullet(bulletStartPosition)
-      // console.log(bulletStartPosition)
-      // bulletTimer = setInterval(() => {
-      // addBullet(bulletCurrentPosition)
-      //console.log('bullet start =>', bulletStart)
-      // removeBullet(bulletCurrentPosition)
-      // removeBullet(bulletCurrentPosition)
-      //console.log('bullet current =>', bulletCurrentPosition)
-      // bulletCurrentPosition -= width
-      // addBullet(bulletCurrentPosition)
-      // console.log('working')
-      // bulletCurrentPosition = bulletStartPosition - 10
-      // console.log('bullet curret', bulletCurrentPosition)
-    } 
-    if (bulletCurrentPosition !== bulletStartPosition) { 
-      // console.log('move')
-      removeBullet(bulletStartPosition)
-      removeBullet(bulletCurrentPosition + 10)
-      addBullet(bulletCurrentPosition)
-      //removeBullet(bulletCurrentPosition)
-      bulletCurrentPosition = bulletCurrentPosition - 10 
-    }
-    if (bulletCurrentPosition < 10) {
-      //removeBullet(bulletCurrentPosition)
-      clearInterval(bulletTimer)
-      removeBullet(bulletCurrentPosition)
-      shootingBullet = false
-      return
-    }
+    const newInterval = setInterval(() => {
+      if (shootingBullet === true) {
+        // removeBullet(lipCurrentPosition - 10)
+        addBullet(bulletStartPosition)
+        // console.log(bulletStartPosition)
+        // bulletTimer = setInterval(() => {
+        // addBullet(bulletCurrentPosition)
+        //console.log('bullet start =>', bulletStart)
+        // removeBullet(bulletCurrentPosition)
+        // removeBullet(bulletCurrentPosition)
+        //console.log('bullet current =>', bulletCurrentPosition)
+        // bulletCurrentPosition -= width
+        // addBullet(bulletCurrentPosition)
+        // console.log('working')
+        // bulletCurrentPosition = bulletStartPosition - 10
+        // console.log('bullet curret', bulletCurrentPosition)
+      }
+      if (bulletCurrentPosition !== bulletStartPosition) {
+        // console.log('move')
+        removeBullet(bulletStartPosition)
+        removeBullet(bulletCurrentPosition + 10)
+        addBullet(bulletCurrentPosition)
+        // removeBullet(bulletCurrentPosition)
+        bulletCurrentPosition = bulletCurrentPosition - 10
+      }
+      if (bulletCurrentPosition < width) {
+        //removeBullet(bulletCurrentPosition)
+        removeBullet(bulletCurrentPosition + 10)
+        console.log('clearing interval') 
+        bulletCurrentPosition = lipCurrentPosition - 20
+        // clearInterval(newInterval)
+        shootingBullet = false
+        clearInterval(newInterval)
+      }
+      // if (shootingBullet === false) { 
+      // }
+    }, 500)
     // }, 200)     
   }
-  // 
-  /* 
-    console.log('startbuttom', startButton)
-    const audio = document.querySelector('audio')
-    console.log('audio')
-    function playAudio(event) {
-      console.log('buttonclicked')
-      audio.src = `../assets/sounds/${event.target.id}.wav`
-      audio.play()
-    }
-  */
-  // BULLET EVENT
-  /*function bulletHitTarget() {
-    if (dragCurrentPosition === bulletCurrentPosition) {
-      removeDrags(dragCurrentPosition)
-    }
-  }*/
-  //addBullet(bulletStart) //call function to add bullet 
-  //console.log(addBullet)
-  // Shooting/ move bullet 
-  //function handleShoot(event) {
-  //const key = event.keyCode 
-  //console.log('current position', lipCurrentPosition)
-  //const spaceBar = keycode === 32
-  // document.addEventListener('keydown', event => {
-  // if (event.keycode || key === 32)
-  //} )
-  /* //console.log('keyCode:', event.keyCode)
-   if (key === 32)  {
-     addBullet(bulletStart)
-   } else if (key === 39 && lipCurrentPosition % width !== width - 1){
-     lipCurrentPosition++
-   } else {
-     //console.log('InvalidKey')
-   }
-   //console.log('position after redefining', lipCurrentPosition)
-   addBullet(bulletStart)
- } */
-  // SHOOTING ALIENS 
-  // Event listeneners 
   startButton.addEventListener('click', startGame)
   document.addEventListener('keydown', shootingBulletYet)
   console.log('key pressed', shootBullet)
   document.addEventListener('keyup', gameController)
 }
-
 window.addEventListener('DOMContentLoaded', init)
