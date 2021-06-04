@@ -8,7 +8,7 @@ body {
   margin: 0;
   color: black;
   font-family: orbitron, sans-serif;
-  background-image: url('/Users/olecastronascimento/development/sei-project_1/assets/1876.jpg');
+  background-image: url('../assets/1876.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -122,21 +122,6 @@ background-size: contain;
   background-image: url('https://media.giphy.com/media/co5VLnDuBaURxfDrfW/source.gif');
   background-size: contain;
   background-repeat: no-repeat;
-  
-}
-.grid div.drags2 {
-  background-image: url('/Users/olecastronascimento/development/sei-project_1/assets/kisspng-tatianna-rupaul-s-drag-race-season-4-drag-queen-telegram-amp-q-5b6e02766adb80.8057967615339362464377.png');
-  background-size: contain;
-  
-}
-.grid div.drags3 {
-  background-image: url('/Users/olecastronascimento/development/sei-project_1/assets/kisspng-tatianna-rupaul-s-drag-race-season-4-drag-queen-telegram-amp-q-5b6e02766adb80.8057967615339362464377.png');
-  background-size: contain;
-  
-}
-.grid div.drags4 {
-  background-image: url('/Users/olecastronascimento/development/sei-project_1/assets/kisspng-tatianna-rupaul-s-drag-race-season-4-drag-queen-telegram-amp-q-5b6e02766adb80.8057967615339362464377.png');
-  background-size: contain;
   
 }
 

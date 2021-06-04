@@ -184,7 +184,9 @@ function init() {
 
   function startGame() {
   // makes this stand alone function here 
+    startButton.disabled = true // disable button to stop it from firing again when pressing a key 
     moveRight()
+    startButton.disabled = false // add button back in for next time after the function was called 
   }
     
 
@@ -195,10 +197,6 @@ function init() {
   // }
   function moveRight() {
     dragTimer = setInterval(() => { 
-      if (dragCurrentPosition === bulletCurrentPosition) {
-        removeBullet(bulletCurrentPosition)
-        console.log('criteria net')
-      }
       if (dragCurrentPosition >= width * width - 20){
         removeDrags(dragCurrentPosition)
         console.log('point for virus')
@@ -206,11 +204,11 @@ function init() {
         clearInterval(dragTimer)
         return
       }
-     
       removeDrags(dragCurrentPosition)
       dragCurrentPosition = dragCurrentPosition + 1
       addDrags(dragCurrentPosition)
       //console.log(dragCurrentPosition)
+      
       if (dragCurrentPosition % width === 0) {
         removeDrags(dragCurrentPosition)
         //console.log(dragCurrentPosition)
@@ -236,11 +234,14 @@ function init() {
         clearInterval(dragTimer)
         return
       }
-      
       removeDrags(dragCurrentPosition)
       dragCurrentPosition = dragCurrentPosition - 1
       addDrags(dragCurrentPosition)
       console.log(dragCurrentPosition)
+      /*if (dragCurrentPosition === bulletCurrentPosition) {
+        removeBullet(bulletCurrentPosition)
+        console.log('criteria net MOVE LEFT')
+      }*/
       if (dragCurrentPosition % width === 0 ) {
         removeDrags(dragCurrentPosition)
         console.log(dragCurrentPosition)
@@ -353,6 +354,7 @@ function init() {
   function shootBullet(event){
     const key = event.keyCode
     if ( key  === 32) {
+
       addBullet(lipCurrentPosition - 10)
       bulletCurrentPosition = lipCurrentPosition - 10
       bulletTimer = setInterval(() => {
@@ -361,15 +363,18 @@ function init() {
         //console.log('bullet current =>', bulletCurrentPosition)
         bulletCurrentPosition -= width
         addBullet(bulletCurrentPosition)
-        
+        if (bulletCurrentPosition === dragCurrentPosition){
+          console.log('criteria met in BULLET')
+        }
         if (bulletCurrentPosition < 10) {
           //removeBullet(bulletCurrentPosition)
           clearInterval(bulletTimer)
           removeBullet(bulletCurrentPosition)
-          return
         }
+       
       }, 200)     
     }
+    return
         
   }
  
