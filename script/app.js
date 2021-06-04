@@ -61,10 +61,10 @@ function init() {
 
   // All DRAGS Array  DRAGS 1-4
 
-  const allDragsSelected = ['drags', 'drags2', 'drags3', 'drags4']
+  //const allDragsSelected = ['drags', 'drags2', 'drags3', 'drags4']
   //console.log(allDragsSelected)
   //const drags = document.querySelector('.drags', '.drags2', '.drags3', '.drags4')
-  console.log(allDragsSelected)
+  //console.log(allDragsSelected)
 
   // variables for shooting
   const bullet = 'bullet'
@@ -195,6 +195,10 @@ function init() {
   // }
   function moveRight() {
     dragTimer = setInterval(() => { 
+      if (dragCurrentPosition === bulletCurrentPosition) {
+        removeBullet(bulletCurrentPosition)
+        console.log('criteria net')
+      }
       if (dragCurrentPosition >= width * width - 20){
         removeDrags(dragCurrentPosition)
         console.log('point for virus')
@@ -202,6 +206,7 @@ function init() {
         clearInterval(dragTimer)
         return
       }
+     
       removeDrags(dragCurrentPosition)
       dragCurrentPosition = dragCurrentPosition + 1
       addDrags(dragCurrentPosition)
@@ -215,19 +220,23 @@ function init() {
         console.log(dragCurrentPosition)
         moveLeft()
       }
-    }, 200)
+    }, 500)
   }
 
   function moveLeft(){
     dragTimer = setInterval(() => {
+      if (dragCurrentPosition === bulletCurrentPosition) {
+        removeBullet(bulletCurrentPosition)
+        console.log('criteria net')
+      }
       if (dragCurrentPosition >= width * width - 20){
         removeDrags(dragCurrentPosition)
         console.log('point for virus')
         counter()
-
         clearInterval(dragTimer)
         return
       }
+      
       removeDrags(dragCurrentPosition)
       dragCurrentPosition = dragCurrentPosition - 1
       addDrags(dragCurrentPosition)
@@ -243,7 +252,7 @@ function init() {
         moveRight()
       }
 
-    }, 200)
+    }, 500)
   }
 
   // counting lives deducted for player and points made/ called in moveRight and left functions: 
@@ -364,14 +373,18 @@ function init() {
         
   }
  
-  function playsound(event) {
-    const key = event.keyCode
-    if (key === 32) {
-      const audio = new Audio('./Users/olecastronascimento/development/sei-project_1/assets/sounds/mixkit-quick-metal-transition-sweep-2639.wav')
-      audio.playsound()
-    }
+// 
+/* 
+  console.log('startbuttom', startButton)
+  const audio = document.querySelector('audio')
+  console.log('audio')
 
+  function playAudio(event) {
+    console.log('buttonclicked')
+    audio.src = `../assets/sounds/${event.target.id}.wav`
+    audio.play()
   }
+*/
 
 
 // BULLET EVENT
@@ -430,7 +443,7 @@ function init() {
   // Event listeneners 
 
   startButton.addEventListener('click', startGame)
-  document.addEventListener('keydown', shootBullet, playsound)
+  document.addEventListener('keydown', shootBullet)
   console.log('key pressed', shootBullet)
   document.addEventListener('keyup', gameController)
   
