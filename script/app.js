@@ -136,19 +136,33 @@ function init() {
   let trueOrFalse = true
   let shootingBullet = false
   function startGame() {
+    resetPoints()
+    startButton.disabled = true
     // const key = event.keyCode
     setInterval(() => {
+      if (dragCurrentPosition === bulletCurrentPosition) {
+        console.log('HIT')
+        removeBullet(bulletCurrentPosition)
+        removeDrags(dragCurrentPosition)
+        bullethit()
+        clearInterval(dragTimer)
+        clearInterval(bulletTimer)
+        return
+      }
       if (trueOrFalse === true) {
         moveRight()
       }
       if (trueOrFalse === false) {
         moveLeft()
-      }
+      } 
+      return
+      
       // if (shootingBullet === true) {
       //   shootBullet()
       //   console.log('shooting')
       // }
     }, 1000)
+    startButton.disabled = false
     // makes this stand alone function here 
   }
   // one function movign right + one function moving left 
@@ -165,6 +179,7 @@ function init() {
       clearInterval(dragTimer)
       return
     }
+    
     console.log('alien', dragCurrentPosition)
     console.log('bullet', bulletCurrentPosition)
     removeDrags(dragCurrentPosition)
@@ -214,9 +229,21 @@ function init() {
     console.log(dragCurrentPosition)
     if (lives === 0) {
       console.log('you lost')
-      // works until this point 
+      // continue here if all lives lost 
     }
   }
+
+  function bullethit() {
+    score += 10
+    scoreCounter.innerText = score 
+  }
+  console.log(bullethit())
+
+  function resetPoints() {
+    score = 0
+    scoreCounter.innerText = score
+  }
+
   // needs function for points if shooting events work. 
   // not working 
   /*function checkHit() {
@@ -330,7 +357,7 @@ function init() {
       }
       // if (shootingBullet === false) { 
       // }
-    }, 500)
+    }, 300)
     // }, 200)     
   }
   startButton.addEventListener('click', startGame)
