@@ -73,3 +73,12 @@ then movign left until end of row
 let currentPosition = 10 // want it to move to 11 then 12 etc. until 19 then move to 29 then move left to 28, 27 etc. 
 
 https://media.giphy.com/media/co5VLnDuBaURxfDrfW/source.gif
+/Users/olecastronascimento/development/sei-project_1/assets/sounds/start.wav
+
+function startGame() {
+  // makes this stand alone function here 
+    startButton.disabled = true // disable button to stop it from firing again when pressing a key 
+    moveRight()
+    startButton.disabled = false // add button back in for next time after the function was called 
+  }
+    
