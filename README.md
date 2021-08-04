@@ -1,7 +1,66 @@
-# sei-project_1
+General Assembly Project 1: Space Invaders (Corona Edition)
+---
+
+Project Members:
+
+Ole Nascimento: 
+
+Timeframe
+
+7 days
 
 
-space-invaders 
+Project Brief: 
+--- 
+
+
+Technologies Used
+---
+
+
+Space Invaders 
+
+Deployed version
+LINK
+---
+
+Code Installation 
+---
+
+
+Planning
+---
+
+
+Process/ Approach
+---
+
+By Days etc. 
+Longest Bit
+
+
+Challenges
+---
+
+
+Wins 
+---
+
+Key Learning
+---
+
+Future Improvements 
+---
+
+
+
+
+
+
+
+
+
+space-invaders)
 
 score  board
 lives left count board
