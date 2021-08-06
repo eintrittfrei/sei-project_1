@@ -1,7 +1,83 @@
-# sei-project_1
+# General Assembly Project 1: Space Invaders (Corona Edition)
+
+## Project Members
+Ole Nascimento https://github.com/eintrittfrei
+
+## Timeframe
+7 days
+
+## Project Brief:  
+
+Build your own version of the classic arcade game Space Invaders from the 80s. The player aims to shoot an invading alien armadam before it reaches the planet's surface using a mounted gun turret. The player can only move left or right. The aliens also move from left to right, and also down each time the reach the side of the screen. The aliens also periodically drop bombs towards the player. Once the player has destroyed a wave of aliens, the game starts again. The aim is to achieve the highest score possible before either being destroyed by the aliens, or allowing them to reach the planet's surface.
+
+### Resources
+
+* [Space Invaders 1978 - Arcade Gameplay - Youtube](https://www.youtube.com/watch?v=MU4psw3ccUI)
+* [Space Invaders - Wikipedia](https://en.wikipedia.org/wiki/Space_Invaders)
+
+### Requirements
+
+* The player should be able to clear at least one wave of aliens
+* The player's score should be displayed at the end of the game
+
+### Challenges
+
+The main challenge here is the movement of large groups of aliens in formation, and the animation of the bombs and player's shots. There are several approaches here, with collision detection being the more challenging.
 
 
-space-invaders 
+## Technologies Used
+
+
+* JavaScript (ES6)
+* HTML5
+* CSS3
+* Git
+* GitHub
+* VScode
+* Google Fonts
+
+## Space Invaders (Corona Edition)
+This is game is inspired by the classic Space Invaders game. The player has to shoot vaccine towards the moving viruses to try and eleminate them.  
+If a virus reaches the ground the player looses one life. If the player hits the virus they will gain 10 points. The game ends when the virus has been killed or the player has lost all lives.
+
+<img width="1116" alt="Screenshot 2021-08-06 at 16 23 29" src="https://user-images.githubusercontent.com/16645758/128524885-633cdf80-d352-47be-828b-42edac2820f4.png">
+
+## Deployed version
+https://eintrittfrei.github.io/sei-project_1/
+
+## Planning
+I started by writing out the basic functionality I wanted to achieve as my MVP. I planned out which elements need to be rendered for the basic MVP and drafted a rough plan for each inlcuding the grid, the virus, the player(gun), projectiles. I decided 
+The next step was to plan out the different stages of the project. I planned 
+
+
+## Process/ Approach
+
+
+By Days etc. 
+Longest Bit
+
+
+## Challenges
+
+
+## Wins 
+
+
+## Key Learning
+
+
+## Future Improvements 
+
+
+
+
+
+
+
+
+
+
+space-invaders)
 
 score  board
 lives left count board
