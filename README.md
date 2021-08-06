@@ -30,9 +30,11 @@ The main challenge here is the movement of large groups of aliens in formation, 
 
 * JavaScript (ES6)
 * HTML5
-* CSS
+* CSS3
 * Git
 * GitHub
+* VScode
+* Google Fonts
 
 ## Deployed version
 
@@ -55,7 +57,6 @@ Longest Bit
 
 
 ## Challenges
-
 
 
 ## Wins 
