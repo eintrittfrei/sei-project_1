@@ -26,48 +26,47 @@ Build your own version of the classic arcade game Space Invaders from the 80s. T
 The main challenge here is the movement of large groups of aliens in formation, and the animation of the bombs and player's shots. There are several approaches here, with collision detection being the more challenging.
 
 
-Technologies Used
----
-
-JavaScript (ES6)
-HTML5
-CSS
-Git
-GitHub
-
-Space Invaders 
-
-Deployed version
-LINK
----
-
-Code Installation 
----
+## Technologies Used
 
 
-Planning
----
+* JavaScript (ES6)
+* HTML5
+* CSS
+* Git
+* GitHub
+
+## Deployed version
+
+## LINK
 
 
-Process/ Approach
----
+## Code Installation 
+
+
+
+## Planning
+
+
+
+## Process/ Approach
+
 
 By Days etc. 
 Longest Bit
 
 
-Challenges
----
+## Challenges
 
 
-Wins 
----
 
-Key Learning
----
+## Wins 
 
-Future Improvements 
----
+
+## Key Learning
+
+
+## Future Improvements 
+
 
 
 
