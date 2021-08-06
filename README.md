@@ -39,6 +39,9 @@ The main challenge here is the movement of large groups of aliens in formation, 
 ## Space Invaders (Corona Edition)
 This is game is inspired by the classic Space Invaders game. The player has to shoot vaccine towards the moving viruses to try and eleminate them.  
 If a virus reaches the ground the player looses one life. If the player hits the virus they will gain 10 points. The game ends when the virus has been killed or the player has lost all lives.
+
+<img width="1116" alt="Screenshot 2021-08-06 at 16 23 29" src="https://user-images.githubusercontent.com/16645758/128524885-633cdf80-d352-47be-828b-42edac2820f4.png">
+
 ## Deployed version
 
 ## LINK
