@@ -1,4 +1,4 @@
-# General Assembly Project 1: Space Invaders (Corona Edition)
+# General Assembly Project 1
 
 ## Project Members
 Ole Nascimento https://github.com/eintrittfrei
@@ -46,12 +46,16 @@ If a virus reaches the ground the player looses one life. If the player hits the
 https://eintrittfrei.github.io/sei-project_1/
 
 ## Planning
-I started by writing out the basic functionality I wanted to achieve as my MVP. I planned out which elements need to be rendered for the basic MVP and drafted a rough plan for each inlcuding the grid, the virus, the player(gun), projectiles. I decided 
-The next step was to plan out the different stages of the project. I planned 
-
+I started by writing out the basic functionality I wanted to achieve as my MVP. I planned out which elements need to be rendered for the basic MVP and drafted a rough plan for each inlcuding the grid, the virus, the player(gun), projectiles. The next step was to plan out the different stages of the project and a rough plan what I would do on each day. I also wrote some basic pseudocode. 
 
 ## Process/ Approach
+### Day 1 - 2
+The first stage was to build out the basci grid for the virus to move across. I used 
+### Day 3 - 4
 
+### Day 4 - 5
+
+### Day 6 - 7
 
 By Days etc. 
 Longest Bit
