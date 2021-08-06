@@ -1,11 +1,10 @@
 # General Assembly Project 1: Space Invaders (Corona Edition)
 
-Project Members:
+## Project Members
 Ole Nascimento
 
-Timeframe
+## Timeframe
 7 days
-
 
 ## Project Brief:  
 
