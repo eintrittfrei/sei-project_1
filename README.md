@@ -50,7 +50,7 @@ I started by writing out the basic functionality I wanted to achieve as my MVP. 
 
 ## Process/ Approach
 ### Day 1 - 2
-The first stage was to build out the basci grid for the virus to move across. I used 
+The first stage was to build out the basci grid for the virus to move across. I used JavaScript to build a 10 X 10 grid.
 ### Day 3 - 4
 
 ### Day 4 - 5

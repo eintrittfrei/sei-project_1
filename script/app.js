@@ -2,26 +2,19 @@ function init() {
   console.log('js up and running')
   // Grid
   const grid = document.querySelector('.grid')
-  //console.log(grid)
   const width = 10
-  //console.log(width)
   const cellCount = width * width
-  //console.log(cellCount)
   const cells = []
-  //console.log(cells)
   for (let i = 0; i < cellCount; i++) {
-    //console.log(cells)
     const cell = document.createElement('div')
-    //cell.innerText = i
     grid.appendChild(cell)
     cells.push(cell)
   }
-  // Lipstick shooter - position 
+  // Vaccine shooter - position 
   const lipClass = 'lipstick' //
   const lipStartPosition = 84
   let lipCurrentPosition = 84 // current postition of lipstick 
-  const squaresGrid = document.querySelectorAll('.grid') // select the divs in the grid 
-  //console.log(squaresGrid)
+  // const squaresGrid = document.querySelectorAll('.grid') // select the divs in the grid 
   const startButton = document.querySelector('#start') // select start button 
   const scoreCounter = document.querySelector('#points-display')
   const livesCounter = document.querySelector('#lives-display')
@@ -40,23 +33,21 @@ function init() {
   let bulletCurrentPosition = lipCurrentPosition - 20
   let bulletTimer
   
-  // DRAG 1
+  // Virus 1
   function addDrags(position) {
     cells[position].classList.add(dragClass)
-    //console.log('lips position passed in ', position)
   }
-  //remove drag from grid 
+  //remove virus from grid 
   function removeDrags(position) {
     cells[position].classList.remove(dragClass)
   }
   addDrags(dragStartposition)
-  //addDrags(dragCurrentPosition)
   let trueOrFalse = true
   let shootingBullet = false
   function startGame() {
     resetPoints()
     startButton.disabled = true
-    // const key = event.keyCode
+
     setInterval(() => {
       if (dragCurrentPosition === bulletCurrentPosition) {
         console.log('HIT')
@@ -82,7 +73,6 @@ function init() {
   }
   
   function moveRight() {
-    // dragTimer = setInterval(() => {
     if (dragCurrentPosition >= width * width - 20) {
       removeDrags(dragCurrentPosition)
       console.log('point for virus')
@@ -96,10 +86,9 @@ function init() {
     removeDrags(dragCurrentPosition)
     dragCurrentPosition = dragCurrentPosition + 1
     addDrags(dragCurrentPosition)
-    //console.log(dragCurrentPosition)
     if (dragCurrentPosition % width === 0) {
       removeDrags(dragCurrentPosition)
-      //console.log(dragCurrentPosition)
+  
       dragCurrentPosition = (dragCurrentPosition - 1) + width
       addDrags(dragCurrentPosition)
       clearInterval(dragTimer)
@@ -154,20 +143,14 @@ function init() {
 
   function addLipstick(position) {
     cells[position].classList.add(lipClass)
-    //console.log(lipClass[position])
   }
-  //Remove lipstick from Grid-call to remove
   function removeLip(position) {
     cells[position].classList.remove(lipClass)
   }
-  addLipstick(lipStartPosition) //call function to add lipstick 
-  //console.log(addLipstick)
-  // Move Lipstick shooter 
+  addLipstick(lipStartPosition) 
   function gameController(event) {
     const key = event.keyCode
-    //console.log('current position', lipCurrentPosition)
     removeLip(lipCurrentPosition)
-    //console.log('keyCode:', event.keyCode)
     if (key === 37 && lipCurrentPosition % width !== 0) {
       lipCurrentPosition--
     } else if (key === 39 && lipCurrentPosition % width !== width - 1) {
@@ -175,9 +158,9 @@ function init() {
     } else {
       //console.log('InvalidKey')
     }
-    //console.log('position after redefining', lipCurrentPosition)
+    
     addLipstick(lipCurrentPosition)
-    //console.log(lipCurrentPosition)
+    
   }
   // Shooting motion BULLET
   // ISSUES: bullet only shoots once
@@ -188,7 +171,7 @@ function init() {
   function addBullet(position) {
     cells[position].classList.add(bullet)
   }
-  //Remove bullet from Grid-call to remove
+  
   function removeBullet(position) {
     cells[position].classList.remove(bullet)
   }
@@ -205,34 +188,32 @@ function init() {
   }
   const bulletStartPosition = lipCurrentPosition - 10
   function shootBullet() {
-    // addBullet(lipCurrentPosition - 10)
+   
     const newInterval = setInterval(() => {
       if (shootingBullet === true) {
-        // removeBullet(lipCurrentPosition - 10)
+        
         addBullet(bulletStartPosition)
-        // console.log(bulletStartPosition)
+        
       }
       if (bulletCurrentPosition !== bulletStartPosition) {
-        // console.log('move')
+        
         removeBullet(bulletStartPosition)
         removeBullet(bulletCurrentPosition + 10)
         addBullet(bulletCurrentPosition)
-        // removeBullet(bulletCurrentPosition)
+        
         bulletCurrentPosition = bulletCurrentPosition - 10
       }
       if (bulletCurrentPosition < width) {
-        //removeBullet(bulletCurrentPosition)
+        
         removeBullet(bulletCurrentPosition + 10)
         console.log('clearing interval') 
         bulletCurrentPosition = lipCurrentPosition - 20
-        // clearInterval(newInterval)
+      
         shootingBullet = false
         clearInterval(newInterval)
       }
-      // if (shootingBullet === false) { 
-      // }
-    }, 300)
-    // }, 200)     
+      
+    }, 300)     
   }
   startButton.addEventListener('click', startGame)
   document.addEventListener('keydown', shootingBulletYet)
