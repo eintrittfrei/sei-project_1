@@ -29,7 +29,7 @@ function init() {
   let dragTimer
   
   const bullet = 'bullet'
-  const bulletStart = lipCurrentPosition - 10 // inside function addBullet()
+  // const bulletStart = lipCurrentPosition - 10 // inside function addBullet()
   let bulletCurrentPosition = lipCurrentPosition - 20
   let bulletTimer
   
