@@ -51,6 +51,21 @@ I started by writing out the basic functionality I wanted to achieve as my MVP. 
 ## Process/ Approach
 ### Day 1 - 2
 The first stage was to build out the basci grid for the virus to move across. I used JavaScript to build a 10 X 10 grid.
+
+```javascript
+// Grid
+  const grid = document.querySelector('.grid')
+  const width = 10
+  const cellCount = width * width
+  const cells = []
+  for (let i = 0; i < cellCount; i++) {
+    const cell = document.createElement('div')
+    grid.appendChild(cell)
+    cells.push(cell)
+  }
+
+
+```
 ### Day 3 - 4
 
 ### Day 4 - 5
