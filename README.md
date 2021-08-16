@@ -29,6 +29,9 @@ Build your own version of the classic arcade game Space Invaders from the 80s. T
 
 ## Space Invaders (Corona Edition)
 
+![Screenshot 2021-08-16 at 14 49 36](https://user-images.githubusercontent.com/16645758/129566408-bd1e12c5-9507-40bd-920d-71740789ec27.png)
+
+
 ## Installation 
 
 Clone or download the repo. In your terminal and open the index.html file in your browser. 
