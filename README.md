@@ -44,8 +44,6 @@ https://eintrittfrei.github.io/sei-project_1/
 * Start game: “Start button”
 * Shooting: “Space bar”
 
-<img width="1116" alt="Screenshot 2021-08-06 at 16 23 29" src="https://user-images.githubusercontent.com/16645758/128524885-633cdf80-d352-47be-828b-42edac2820f4.png">
-
 ## Deployed version
 https://eintrittfrei.github.io/sei-project_1/
 
