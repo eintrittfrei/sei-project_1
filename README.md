@@ -29,8 +29,6 @@ Build your own version of the classic arcade game Space Invaders from the 80s. T
 
 ## Space Invaders (Corona Edition)
 
-<img width="1116" alt="Screenshot 2021-08-06 at 16 23 29" src="https://user-images.githubusercontent.com/16645758/128524885-633cdf80-d352-47be-828b-42edac2820f4.png">
-
 ## Installation 
 
 Clone or download the repo. In your terminal and open the index.html file in your browser. 
@@ -131,7 +129,7 @@ The player control included the vaccine shooters left and right movement and sho
 Virus movement 
 On pressing the start button the function startGame() is triggered. I created an interval function set to 1000 ms so the virus will move at a speed of one cell per second across the grid. The intervall will keep running if either the virus is hit by a vaccine or it reaches the end of the grid. I defined the movement using basic conditionals to determine when the end of the grid is reached and the virus needs to move down one step before moving in the opposite direction. 
 
-```javacript
+```javascript
 
 setInterval(() => {
       if (dragCurrentPosition === bulletCurrentPosition) {
