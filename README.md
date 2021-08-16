@@ -1,5 +1,8 @@
 # General Assembly Project 1
 
+### Overview
+This was the first project of the General Assembly Software Engineering Immersive course. It was a solo project where we had to build a game in Vanilla JavaScript from scratch. The game is inspired by the classic Space Invaders game. The player has to shoot a vaccine towards the moving viruses to try and eliminate them. If a virus reaches the ground the player loses one life. If the player hits the virus they will gain 10 points. The game ends when the virus has been killed or the player has lost all lives.
+
 ## Project Members
 Ole Nascimento https://github.com/eintrittfrei
 
@@ -10,20 +13,8 @@ Ole Nascimento https://github.com/eintrittfrei
 
 Build your own version of the classic arcade game Space Invaders from the 80s. The player aims to shoot an invading alien armadam before it reaches the planet's surface using a mounted gun turret. The player can only move left or right. The aliens also move from left to right, and also down each time the reach the side of the screen. The aliens also periodically drop bombs towards the player. Once the player has destroyed a wave of aliens, the game starts again. The aim is to achieve the highest score possible before either being destroyed by the aliens, or allowing them to reach the planet's surface.
 
-### Resources
-
-* [Space Invaders 1978 - Arcade Gameplay - Youtube](https://www.youtube.com/watch?v=MU4psw3ccUI)
-* [Space Invaders - Wikipedia](https://en.wikipedia.org/wiki/Space_Invaders)
-
-### Requirements
-
-* The player should be able to clear at least one wave of aliens
-* The player's score should be displayed at the end of the game
-
-### Challenges
-
-The main challenge here is the movement of large groups of aliens in formation, and the animation of the bombs and player's shots. There are several approaches here, with collision detection being the more challenging.
-
+* The player should be able to clear at least one wave of aliens.
+* The player's score should be displayed at the end of the game.
 
 ## Technologies Used
 
@@ -37,20 +28,34 @@ The main challenge here is the movement of large groups of aliens in formation, 
 * Google Fonts
 
 ## Space Invaders (Corona Edition)
-This is game is inspired by the classic Space Invaders game. The player has to shoot vaccine towards the moving viruses to try and eleminate them.  
-If a virus reaches the ground the player looses one life. If the player hits the virus they will gain 10 points. The game ends when the virus has been killed or the player has lost all lives.
+
+<img width="1116" alt="Screenshot 2021-08-06 at 16 23 29" src="https://user-images.githubusercontent.com/16645758/128524885-633cdf80-d352-47be-828b-42edac2820f4.png">
+
+## Installation 
+
+Clone or download the repo. In your terminal and open the index.html file in your browser. 
+
+## Deployed version
+https://eintrittfrei.github.io/sei-project_1/
+
+### Controls
+* Vaccine shooter movements  ← → keys
+* Start game: “Start button”
+* Shooting: “Space bar”
 
 <img width="1116" alt="Screenshot 2021-08-06 at 16 23 29" src="https://user-images.githubusercontent.com/16645758/128524885-633cdf80-d352-47be-828b-42edac2820f4.png">
 
 ## Deployed version
 https://eintrittfrei.github.io/sei-project_1/
 
-## Planning
-I started by writing out the basic functionality I wanted to achieve as my MVP. I planned out which elements need to be rendered for the basic MVP and drafted a rough plan for each inlcuding the grid, the virus, the player(gun), projectiles. The next step was to plan out the different stages of the project and a rough plan what I would do on each day. I also wrote some basic pseudocode. 
 
-## Process/ Approach
-### Day 1 - 2
-The first stage was to build out the basci grid for the virus to move across. I used JavaScript to build a 10 X 10 grid.
+## Planning
+I started by writing out the basic functionality I wanted to achieve as my MVP. I planned out which elements need to be rendered for the basic MVP and drafted a rough plan for each including the grid, the virus, the player(gun), projectiles. The next step was to plan out the different stages of the project and a rough plan of what I would do on each day. I also wrote some basic pseudocode. I also drew a plan of the likely code required for each item's movement on the grid and also the score counter, live counter and collision. 
+
+## Process
+
+Grid and static items 
+The first stage was to build out the basic grid for the virus to move across. The grid was created using an empty array. Cells were pushed into the array using a for loop. I used JavaScript to build a 10 X 10 grid.
 
 ```javascript
 // Grid
@@ -66,114 +71,78 @@ The first stage was to build out the basci grid for the virus to move across. I 
 
 
 ```
-### Day 3 - 4
 
-### Day 4 - 5
+I applied some basic css styling to the grid to make it visible in the browser. 
+I also created classes for all moving parts of the game and used animated and static gif images as background. 
+I defined starting positions for the moving parts of the game using let variables. I defined the positions based on the index number of the grid array. 
 
-### Day 6 - 7
+CODE SNIPPET
 
-By Days etc. 
-Longest Bit
+ I then added variables for the start button, score board and projectile and virus using HTML and CSS. I defined ids for the start button, score board and lifes counter to target those with JavaScript. 
+
+Movement lives and scores 
+The next step was to create functions for the game movements. I started by coding the adding and removing of the virus to and from its current position and also functions to redefine the current position- right - left and downwards movement. 
+
+CODE SNIPPET
+ 
+
+Player control 
+The player control included the vaccine shooters left and right movement and shooting the vaccine. This functionality is controlled using the arrow keys and spacebar. I first defined a function for the key event by using universal key numbers to identify which key had been pressed. I used a keydown event to ensure the vaccine would be triggered when the key was pressed down and not on release. 
+
+CODE SNIPPET
+
+
+Virus movement 
+On pressing the start button the function startGame() is triggered. I created an interval function set to 1000 ms so the virus will move at a speed of one cell per second across the grid. The intervall will keep running if either the virus is hit by a vaccine or it reaches the end of the grid. I defined the movement using basic conditionals to determine when the end of the grid is reached and the virus needs to move down one step before moving in the opposite direction. 
+
+CODE SNIPPET
+
+
+Shooting vaccine 
+The next task was to create the shooting movement which was triggered by the space bar. 
+I created two functions to remove and add the vaccine (projectile) class to the grid. The movement upwards is achieved by using an interval function at a timer of 300ms. Removing the vaccine from its current position, redefining the position and adding it back to the new position until the vaccines position is either at the end of the grid or is equal to the virus position which represents a hit event. 
+
+Hit event 
+A hit event is defined by the position of the vaccine and the virus. If both positions are equal the bullethit() function is triggered. 
+
+CODE SNIPPET
+
+Score counting 
+When the bullethit() function is triggered it will do two things: 10 points are added to the players score (score += 10) and will update the inner text of the scoreboard. 
+
+CODE SNIPPET
+
+
+Lives counter
+If the virus reaches the end of the grid, the counter() function is triggered. This will deduct one life from the player. (lives - =1) and update the inner text of the live div. It will also trigger the starting position of the virus so the game is reset. 
+
+CODE SNIPPET
 
 
 ## Challenges
 
+Movement across the grid 
+Hit events 
+Key events 
+
 
 ## Wins 
 
+I learned how to set up a grid with JavaScript and how to make an object move in a game. 
+Another win is that even though the game is not yet finished it has the basic functionality and I achieved this almost without help.  
+
+## Bugs
+
+The game still has many  bugs. When shooting a second round of vaccine before the previous one has reached the end of the grid, the virus interval appears to be triggered again which makes it move irregularly and too fast across the grid. 
+The hit event is not always detected even when the position was clearly equal for both the virus and the vaccine. 
+The movement across the grid is not using all the cells. Some rows are cut short and the virus moves down before having reached the end of the row. 
 
 ## Key Learning
-
+I learned about planning and what should be considered in more detail. The value of pseudocode which can be very useful to plan in more detail early on by thinking through the functionality step by step. The biggest learning was problem solving skills. Having to figure out what to do without help instantly available.   
 
 ## Future Improvements 
+The game is currently still unfinished so I would like to finish the basic MVP to make it playable. This includes correct movement, and correct detection of vaccine hitting the virus. 
 
 
 
 
-
-
-
-
-
-
-space-invaders)
-
-score  board
-lives left count board
-
-Grid:
-js grid 40X40 grid on 600X600 wrapper 
-
-aliens:
- -worth 10 points - 1 row of  (.class + index?)
-a class moveing across the grid 
-class add and remove to create movement 
-using an intervall to automate alien movement left to right and downwards 
-not moving past the grid border with control flow 
-
-gun/ player:
-(controlled with arrow keys and space bar) -  
-
-baseline/ ground: 
-static line of div  class='base' at the bottom of the grid 
-
-Game 
-rows of aliens moving slow from left right - right left AND moving downwards one step each time the border is reached left or right 
-
- spaceship/ gun can move left or right (arrow keys) 
- also able to shoot upwards in straight line with space bar
-if alien is hit one alien is removed (remove class?) 
-
-if player looses 3 lives game is over => aliens win
-if all aliens are removed (shot) player wins game ends 
-
-
-Challenges: 
-how to shoot: if space bar pushed => .class intervall starts moving .class across grid until it reaches the border 
-OR it reaches a grid (index number) with an object 
-
-aliens movign in formation: 
-
-
-
-Functions: 
-Basic grid 20X420
-Game start function 
-Grid 
-movement for shooting 
-movement for drag queens moving sideways and downwards on loop/ interval . with classes or movement W3 idea. 
-
-
-
-drag queens/ aliens movement: 
-- 
--starting at position 10
--select all squares in grid .grid with variable array of squares with numbers
-- use grid coordinates to move along grid 
-numbers +/- 10 = x 
-numbers +/- 1 = y 
--create axis x and y 
-- movement with x +=1 and y +=1 
-- define end of row 
-
--current postion 10 moving right until end of row 
-movign down by one
-then movign left until end of row 
-
-
-
-
-
-
-let currentPosition = 10 // want it to move to 11 then 12 etc. until 19 then move to 29 then move left to 28, 27 etc. 
-
-https://media.giphy.com/media/co5VLnDuBaURxfDrfW/source.gif
-/Users/olecastronascimento/development/sei-project_1/assets/sounds/start.wav
-
-function startGame() {
-  // makes this stand alone function here 
-    startButton.disabled = true // disable button to stop it from firing again when pressing a key 
-    moveRight()
-    startButton.disabled = false // add button back in for next time after the function was called 
-  }
-    
