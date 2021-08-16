@@ -74,9 +74,13 @@ The first stage was to build out the basic grid for the virus to move across. Th
 
 I applied some basic css styling to the grid to make it visible in the browser. 
 I also created classes for all moving parts of the game and used animated and static gif images as background. 
-I defined starting positions for the moving parts of the game using let variables. I defined the positions based on the index number of the grid array. 
+I defined starting positions for the moving parts of the game using let variables. I defined the positions using the index number of the grid array. 
 
 ```javascript
+// Vaccine shooter - position 
+  const lipClass = 'lipstick' //
+  const lipStartPosition = 84
+  let lipCurrentPosition = 84 // current postition of vaccine 
 
 ```
 
@@ -85,20 +89,75 @@ I defined starting positions for the moving parts of the game using let variable
 Movement lives and scores 
 The next step was to create functions for the game movements. I started by coding the adding and removing of the virus to and from its current position and also functions to redefine the current position- right - left and downwards movement. 
 
-CODE SNIPPET
+
+```javascript
+  // Virus
+  const dragClass = 'drags'
+  const dragStartposition = 10
+  let dragCurrentPosition = 10
+  let dragTimer
+
+```
  
 
 Player control 
 The player control included the vaccine shooters left and right movement and shooting the vaccine. This functionality is controlled using the arrow keys and spacebar. I first defined a function for the key event by using universal key numbers to identify which key had been pressed. I used a keydown event to ensure the vaccine would be triggered when the key was pressed down and not on release. 
 
-CODE SNIPPET
+```javascript
+  function addLipstick(position) {
+    cells[position].classList.add(lipClass)
+  }
+  function removeLip(position) {
+    cells[position].classList.remove(lipClass)
+  }
+  addLipstick(lipStartPosition) 
+  function gameController(event) {
+    const key = event.keyCode
+    removeLip(lipCurrentPosition)
+    if (key === 37 && lipCurrentPosition % width !== 0) {
+      lipCurrentPosition--
+    } else if (key === 39 && lipCurrentPosition % width !== width - 1) {
+      lipCurrentPosition++
+    } else {
+      //console.log('InvalidKey')
+    }
+    
+    addLipstick(lipCurrentPosition)
+    
+  }
+```
 
 
 Virus movement 
 On pressing the start button the function startGame() is triggered. I created an interval function set to 1000 ms so the virus will move at a speed of one cell per second across the grid. The intervall will keep running if either the virus is hit by a vaccine or it reaches the end of the grid. I defined the movement using basic conditionals to determine when the end of the grid is reached and the virus needs to move down one step before moving in the opposite direction. 
 
-CODE SNIPPET
+```javacript
 
+setInterval(() => {
+      if (dragCurrentPosition === bulletCurrentPosition) {
+        console.log('HIT')
+        removeBullet(bulletCurrentPosition)
+        removeDrags(dragCurrentPosition)
+        bullethit()
+        clearInterval(dragTimer)
+        clearInterval(bulletTimer)
+        return
+      }
+      if (trueOrFalse === true) {
+        moveRight()
+      }
+      if (trueOrFalse === false) {
+        moveLeft()
+      } 
+      return
+      
+    
+    }, 1000)
+    startButton.disabled = false
+    
+  }
+  
+```
 
 Shooting vaccine 
 The next task was to create the shooting movement which was triggered by the space bar. 
@@ -107,19 +166,38 @@ I created two functions to remove and add the vaccine (projectile) class to the 
 Hit event 
 A hit event is defined by the position of the vaccine and the virus. If both positions are equal the bullethit() function is triggered. 
 
-CODE SNIPPET
+```javascript
+function bullethit() {
+    score += 10
+    scoreCounter.innerText = score 
+  }
+  ```
 
 Score counting 
 When the bullethit() function is triggered it will do two things: 10 points are added to the players score (score += 10) and will update the inner text of the scoreboard. 
 
-CODE SNIPPET
-
+ ```javascript
+ function bullethit() {
+    score += 10
+    scoreCounter.innerText = score 
+  }CODE SNIPPET
+```
 
 Lives counter
 If the virus reaches the end of the grid, the counter() function is triggered. This will deduct one life from the player. (lives - =1) and update the inner text of the live div. It will also trigger the starting position of the virus so the game is reset. 
 
-CODE SNIPPET
-
+```javascript
+function counter() {
+    lives -= 1
+    livesCounter.innerText = lives
+    addDrags(dragStartposition)
+    console.log(dragCurrentPosition)
+    if (lives === 0) {
+      console.log('you lost')
+      
+    }
+  }
+```
 
 ## Challenges
 
