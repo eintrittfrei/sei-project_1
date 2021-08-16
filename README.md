@@ -76,7 +76,9 @@ I applied some basic css styling to the grid to make it visible in the browser.
 I also created classes for all moving parts of the game and used animated and static gif images as background. 
 I defined starting positions for the moving parts of the game using let variables. I defined the positions based on the index number of the grid array. 
 
-CODE SNIPPET
+```javascript
+
+```
 
  I then added variables for the start button, score board and projectile and virus using HTML and CSS. I defined ids for the start button, score board and lifes counter to target those with JavaScript. 
 
