@@ -179,7 +179,7 @@ When the bullethit() function is triggered it will do two things: 10 points are 
  function bullethit() {
     score += 10
     scoreCounter.innerText = score 
-  }CODE SNIPPET
+  }
 ```
 
 Lives counter
