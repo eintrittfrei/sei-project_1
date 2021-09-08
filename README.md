@@ -162,7 +162,6 @@ Shooting vaccine
 The next task was to create the shooting movement which was triggered by the space bar. 
 I created two functions to remove and add the vaccine (projectile) class to the grid. The movement upwards is achieved by using an interval function at a timer of 300ms. Removing the vaccine from its current position, redefining the position and adding it back to the new position until the vaccines position is either at the end of the grid or is equal to the virus position which represents a hit event. 
 
-Hit event 
 A hit event is defined by the position of the vaccine and the virus. If both positions are equal the bullethit() function is triggered. 
 
 ```javascript
