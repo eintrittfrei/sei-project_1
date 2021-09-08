@@ -182,7 +182,7 @@ When the bullethit() function is triggered it will do two things: 10 points are 
 ```
 
 Lives counter
-If the virus reaches the end of the grid, the counter() function is triggered. This will deduct one life from the player. (lives - =1) and update the inner text of the live div. It will also trigger the starting position of the virus so the game is reset. 
+If the virus reaches the end of the grid, the counter() function is triggered. This will deduct one life from the player. (lives -= 1) and update the inner text of the lives div. It will also trigger the starting position of the virus so the game is reset. 
 
 ```javascript
 function counter() {
