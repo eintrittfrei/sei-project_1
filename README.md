@@ -99,7 +99,6 @@ The next step was to create functions for the game movements. I started by codin
 ```
  
 
-Player control 
 The player control included the vaccine shooters left and right movement and shooting the vaccine. This functionality is controlled using the arrow keys and spacebar. I first defined a function for the key event by using universal key numbers to identify which key had been pressed. I used a keydown event to ensure the vaccine would be triggered when the key was pressed down and not on release. 
 
 ```javascript
@@ -158,8 +157,7 @@ setInterval(() => {
   
 ```
 
-Shooting vaccine 
-The next task was to create the shooting movement which was triggered by the space bar. 
+The next task was to create movement for the projectile (vaccine shooting towards the virus) upwards on the grid, triggered by the space bar.
 I created two functions to remove and add the vaccine (projectile) class to the grid. The movement upwards is achieved by using an interval function at a timer of 300ms. Removing the vaccine from its current position, redefining the position and adding it back to the new position until the vaccines position is either at the end of the grid or is equal to the virus position which represents a hit event. 
 
 A hit event is defined by the position of the vaccine and the virus. If both positions are equal the bullethit() function is triggered. 
