@@ -40,9 +40,9 @@ Clone or download the repo. In your terminal and open the index.html file in you
 https://eintrittfrei.github.io/sei-project_1/
 
 ### Controls
-* Vaccine shooter movements  ← → keys
-* Start game: “Start button”
-* Shooting: “Space bar”
+* Vaccine shooter movement  ← → keys.
+* Start game: “Start button”.
+* Shooting: “Space bar”.
 
 ## Deployed version
 https://eintrittfrei.github.io/sei-project_1/
@@ -197,9 +197,9 @@ function counter() {
 
 ## Challenges
 
-Movement across the grid 
-Hit events 
-Key events 
+* Movement across the grid.  
+* Hit events. 
+* Key events. 
 
 
 ## Wins 
