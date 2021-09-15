@@ -204,20 +204,26 @@ function counter() {
 
 ## Wins 
 
-I learned how to set up a grid with JavaScript and how to make an object move in a game. 
-Another win is that even though the game is not yet finished it has the basic functionality and I achieved this almost without help.  
+* I learned how to set up a grid with JavaScript.
+* And how to make an object move in a game. 
+* Another win is that even though the game is not yet finished it has the basic functionality and I achieved this almost without help.  
 
 ## Bugs
 
-The game still has many  bugs. When shooting a second round of vaccine before the previous one has reached the end of the grid, the virus interval appears to be triggered again which makes it move irregularly and too fast across the grid. 
-The hit event is not always detected even when the position was clearly equal for both the virus and the vaccine. 
-The movement across the grid is not using all the cells. Some rows are cut short and the virus moves down before having reached the end of the row. 
+* When shooting a second round of vaccine before the previous one has reached the end of the grid, the virus interval appears to be triggered again which makes it move irregularly and too fast across the grid. 
+* The hit event is not always detected even when the position was clearly equal for both the virus and the vaccine. 
+* The movement across the grid is not using all the cells. Some rows are cut short and the virus moves down before having reached the end of the row. 
 
 ## Key Learning
-I learned about planning and what should be considered in more detail. The value of pseudocode which can be very useful to plan in more detail early on by thinking through the functionality step by step. The biggest learning was problem solving skills. Having to figure out what to do without help instantly available.   
+
+* I learned about planning and what should be considered in more detail. 
+* The value of pseudocode which can be very useful to plan in more detail early on by thinking through the functionality step by step. 
+* The biggest learning was problem solving skills. Having to figure out what to do without help instantly available.   
 
 ## Future Improvements 
-The game is currently still unfinished so I would like to finish the basic MVP to make it playable. This includes correct movement, and correct detection of vaccine hitting the virus. 
+
+* The game is currently still unfinished so I would like to finish the basic MVP to make it playable.
+* This includes correct movement, and correct detection of vaccine hitting the virus. 
 
 
 
