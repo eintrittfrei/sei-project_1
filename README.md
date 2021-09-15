@@ -53,7 +53,7 @@ I started by writing out the basic functionality I wanted to achieve as my MVP. 
 
 ## Process
 
-Grid and static items: 
+Grid and static items:<br/> 
 The first stage was to build out the basic grid for the virus to move across. The grid was created using an empty array. Cells were pushed into the array using a for loop. I used JavaScript to build a 10 X 10 grid.
 
 ```javascript
@@ -85,7 +85,7 @@ I defined starting positions for the moving parts of the game using let variable
 
 I then added variables for the start button, score board and projectile and virus using HTML and CSS. I defined ids for the start button, score board and lifes counter to target those with JavaScript. 
 
-Movement lives and scores: 
+Movement lives and scores:<br/> 
 The next step was to create functions for the game movements. I started by coding the adding and removing of the virus to and from its current position and also functions to redefine the current position- right - left and downwards movement. 
 
 
@@ -126,7 +126,7 @@ The player control included the vaccine shooters left and right movement and sho
 ```
 
 
-Virus movement: 
+Virus movement:<br/> 
 On pressing the start button the function startGame() is triggered. I created an interval function set to 1000 ms so the virus will move at a speed of one cell per second across the grid. The intervall will keep running if either the virus is hit by a vaccine or it reaches the end of the grid. I defined the movement using basic conditionals to determine when the end of the grid is reached and the virus needs to move down one step before moving in the opposite direction. 
 
 ```javascript
@@ -169,7 +169,7 @@ function bullethit() {
   }
   ```
 
-Score counting: 
+Score counting:<br/> 
 When the bullethit() function is triggered it will do two things: 10 points are added to the players score (score += 10) and will update the inner text of the scoreboard. 
 
  ```javascript
@@ -179,7 +179,7 @@ When the bullethit() function is triggered it will do two things: 10 points are 
   }
 ```
 
-Lives counter:
+Lives counter:<br/> 
 If the virus reaches the end of the grid, the counter() function is triggered. This will deduct one life from the player. (lives -= 1) and update the inner text of the lives div. It will also trigger the starting position of the virus so the game is reset. 
 
 ```javascript
