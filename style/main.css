@@ -4,7 +4,6 @@
   box-sizing: border-box;
 }
 body {
-  height: 100vh;
   margin: 0;
   color: black;
   font-family: orbitron, sans-serif;
@@ -109,9 +108,10 @@ span#lives-display {
   width: 10%;
   font-size: 60%;
   align-content: center;
+  border: solid black;
 }
 
-.grid div.lipstick {
+.lipstick {
 background-image: url('https://media.giphy.com/media/VUVx448gh1GshHxbHV/source.gif');
 background-repeat: no-repeat;
 background-size: contain;
