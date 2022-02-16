@@ -22,7 +22,6 @@ function init() {
       const cells = []
       for (let i = 0; i < this.calculateCellCount(); i++) {
         cells.push(this.selectDivForGrid().appendChild(this.createCell(i)))
-        // cells.push(this.createCell())
       }
       return cells
     }
@@ -33,7 +32,9 @@ function init() {
   console.log('GAME ARRAY', gameArray)
   const width = gameArray.length
 
-  // Game controller 
+  
+
+
   const lipStartPosition = 84
   let lipCurrentPosition = 84 // current postition of vaccine 
   const lipClass = 'lipstick'
@@ -46,15 +47,37 @@ function init() {
   function removeLip(position) {
     gameArray[position].classList.remove(lipClass)
   }
-
-
   addLipstick(lipStartPosition) 
-  function gameController(event) {
-    const key = event.keyCode
+  
+  
+  let leftPressed = false
+  let rightPressed = false
+
+  function keyDownHandler(event) {
+    if (event.keyCode === 39) {
+      Controller()
+      return rightPressed = true
+    } else if (event.keyCode === 37) {
+      Controller()
+      return  leftPressed = true
+    }
+  }
+
+  function keyUpHandler(event) {
+    if (event.keyCode === 39) {
+      Controller()
+      return rightPressed = false
+    } else if (event.keyCode === 37) {
+      Controller()
+      return leftPressed = false
+    }
+  }
+
+  function Controller() {
     removeLip(lipCurrentPosition)
-    if (key === 37 && lipCurrentPosition % width !== 0) {
+    if (leftPressed && lipCurrentPosition % width !== 0) {
       lipCurrentPosition--
-    } else if (key === 39 && lipCurrentPosition % width !== width - 1) {
+    } else if (rightPressed && lipCurrentPosition % width !== width - 1) {
       lipCurrentPosition++
     } else {
       //console.log('InvalidKey')
@@ -62,12 +85,16 @@ function init() {
     
     addLipstick(lipCurrentPosition)
   }
+
+
+
+
   // // const squaresGrid = document.querySelectorAll('.grid') // select the divs in the grid 
-  // const startButton = document.querySelector('#start') // select start button 
-  // const scoreCounter = document.querySelector('#points-display')
-  // const livesCounter = document.querySelector('#lives-display')
-  // let score = 0
-  // let lives = 3
+  const startButton = document.querySelector('#start') // select start button 
+  const scoreCounter = document.querySelector('#points-display')
+  const livesCounter = document.querySelector('#lives-display')
+  let score = 0
+  let lives = 3
   // // AUDIO
   // // variables for aliens/ DRAGS
   // // Virus
@@ -243,9 +270,12 @@ function init() {
       
   //   }, 300)     
   // }
-  // startButton.addEventListener('click', startGame)
+  startButton.addEventListener('click', startGame)
   // document.addEventListener('keydown', shootingBulletYet)
   // console.log('key pressed', shootBullet)
-  document.addEventListener('keyup', gameController)
+  
+  document.addEventListener('keydown', keyDownHandler, false )
+  document.addEventListener('keyup', keyUpHandler, false)
+
 }
 window.addEventListener('DOMContentLoaded', init)
